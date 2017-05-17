@@ -1,0 +1,40 @@
+html, body {
+    height:92vh;
+    width:100vw;
+}
+
+.navbar{
+    margin-bottom: 0px !important;
+    border-radius: 0;
+}
+
+.outer-center{
+    position: relative;
+}
+
+/*used for centering the search in the navbar */
+.inner-center{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+/*
+.homepage{
+    position: relative;
+    background-image: url('./assets/img/bg1.jpg');
+    background-size: cover;
+}
+
+.overlay{
+    position: absolute; /*within its parent element    
+    
+    /*the following 3 lines are what puts stuff in the center
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+ 
+    //makes the text box and text
+    color: white;
+    background: rgba(0, 0, 0, 0.75);
+}
+*/

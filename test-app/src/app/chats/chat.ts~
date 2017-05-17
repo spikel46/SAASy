@@ -1,0 +1,8 @@
+export class Chat{
+  sender: string;
+  toRoom: number;
+  content: string;
+  timestamp: Date;
+  score: number;
+}
+

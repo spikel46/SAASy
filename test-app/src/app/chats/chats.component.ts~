@@ -1,0 +1,33 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
+
+import { Chat } from './chat';
+import { ChatsService } from './chats.service';
+  
+@Component({
+  selector: 'app-chats',
+  templateUrl: './chats.component.html',
+  styleUrls: ['./chats.component.css']
+})
+
+export class ChatsComponent implements OnInit {
+
+  @Input() id:number;
+  chats: Chat[];
+
+  constructor(
+    private chatsService: ChatsService) {}
+
+
+  ngOnInit() {
+    this.getChats(); 
+  }
+
+  getChats(): void {
+    this.chatsService.getRoomChats(this.id).then => (chats => this.chats = chats);
+  }
+}
+
+

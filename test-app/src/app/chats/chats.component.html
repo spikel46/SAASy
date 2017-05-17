@@ -1,0 +1,38 @@
+<div class="chatbox why4">
+  <div class="chatbox-header">
+    <h3 class="chat-topic">Group Chat</h3>
+  </div><!-- end of chat header -->
+  
+  <div class="chatbox-body">
+    <ul class="messages">
+      <li *ngFor="let chat of chats">
+	<div *ngIf="chat.sender === 'Joey'">
+	  <div class="chatbox-messages-sent" id="chat-msg">
+	    <p class="sender"> {{chat.sender}}: </p>
+	    <p class="content"> {{chat.content}} </p>
+	    <p class="date"> {{chat.timestamp | date:"short"}}</p>
+	  </div>
+	</div>
+	<div *ngIf="chat.sender !== 'Joey'">
+	  <div class="chatbox-messages-recieved" id="chat-msg">
+	    <p class="sender"> {{chat.sender}}: </p>
+	    <p class="content"> {{chat.content}} </p>
+	    <p class="date"> {{chat.timestamp | date:"short"}}</p>
+	  </div>
+	</div>
+      </li>
+    </ul>
+  </div> <!-- end of chat body -->
+  
+  <div class="chatbox-footer">
+    <div class="input-group">
+      <input type="text" id="msg-input" placeholder="Type Something..." class="form-control" #messageContent />
+      <span class="input-group-btn">
+      <button (click)="add(messageContent.value); messageContent.value=''" id="msg-btn" class="btn btn-primary btn-flat">
+        Send
+      </button>
+      </span>
+    </div>
+  </div><!-- end of chat footer -->
+  
+</div><!-- end of chatbox-->

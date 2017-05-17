@@ -1,0 +1,33 @@
+.why{
+    background-color: yellow;
+    width:100vw;
+    height:92vh;
+    /*overflow:hidden;*/
+    /*height:91vh;*/
+}
+
+.why2{
+    background-color: green;
+    width:100%;
+    height:85.25vh;
+    margin:0;
+}
+
+.why3{
+    background: linear-gradient(120deg, rgba(23, 190, 187, 1), rgba(240, 166, 202, 1));
+    position: relative;
+    display: flex;
+    flex-direction: column; /*everything magically went into place*/
+    height: 100%; /*1 vh/w is 1% of "viewport's" height and width*/
+    margin:0;
+}
+
+.toolbar{
+    height:100%;
+    background-color: blue;
+}
+
+.users{
+    height:100%;
+    background-color: blue;
+}

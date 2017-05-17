@@ -1,0 +1,97 @@
+.chatbox{
+  background: rgba(255, 255, 255, 0.05);
+  width: 47.5vw;
+  height: 80vh;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  position: relative;
+  box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.1);
+}
+
+.chatbox-header{
+    padding: 0 0 2px 0;
+    background: rgba(255,255,255,.1);
+}
+
+.chatbox-body{
+    overflow: auto;
+    padding: 10px;
+    height: 68vh;
+}
+
+.messages{
+    list-style-type: none; /*removes bullet points */
+    padding:0;
+}
+
+.chatbox-footer{
+    position: absolute;
+    width:100%;
+    bottom:0;
+    border-radius:20px;
+}
+
+.chatbox-messages-recieved{
+    /*these three lines below allow for right chat boxes*/
+    direction:"ltr";
+    float: left;
+    text-align: left;
+
+    
+    border-radius: 20px 20px 20px 20px;
+    /*
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    */
+    padding-right:10px;
+    padding-left:10px;
+    
+    background: rgba(255,255,255,.1);
+    margin-bottom:5px;
+    clear: both; /*makes floats go to next line*/
+}
+.chatbox-messages-sent{
+    /*these three lines below allow for right chat boxes*/
+    direction:"rtl";
+    float: right;
+    text-align: right;
+    clear: both; /*makes floats go to next line*/
+    
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    
+    padding-right:10px;
+    padding-left:10px;
+    margin-bottom:5px;
+    
+    background: rgba(0,0,0,.1);
+    font-size: 18px;
+}
+
+.sender{
+    font-size:18px;
+}
+.content{
+    font-size:18px;
+}
+.date{
+    font-size:10px;
+}
+
+
+#msg-input{
+    border-top-left-radius: 20px;
+    /*border-top-right-radius: 20px;*/
+    /*border-bottom-right-radius: 20px;*/
+    border-bottom-left-radius: 20px;
+}
+
+#msg-btn{
+    /*border-top-left-radius: 20px;*/
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    /*border-bottom-left-radius: 20px;*/
+}

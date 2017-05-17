@@ -1,0 +1,100 @@
+import * as path from 'path';
+import * as express from 'express';
+import * as logger from 'morgan';
+import * as url from 'url';
+import * as bodyParser from 'body-parser';
+
+import RoomModel from './model/RoomModel';
+import ChatModel from './model/ChatModel';
+import DataAccess from './DataAccess';
+
+// Creates and configures an ExpressJS web server.
+class App {
+
+  // ref to Express instance
+  public express: express.Application;
+  public Rooms:RoomModel;
+  public Chats:ChatModel;
+  public idGenerator:number;
+
+  //Run configuration methods on the Express instance.
+  constructor() {
+    this.express = express();
+    this.middleware();
+    this.routes();
+    this.idGenerator = 100;
+    this.Rooms = new RoomModel();
+    this.Chats = new ChatModel();
+  }
+
+  // Configure Express middleware.
+  private middleware(): void {
+    this.express.use(logger('dev'));
+    this.express.use(bodyParser.json());
+    this.express.use(bodyParser.urlencoded({ extended: false }));
+  }
+
+  // Configure API endpoints.
+  private routes(): void {
+    let router = express.Router();
+    
+    router.use( (req, res, next) => {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+    });
+
+
+    //Get Routes
+
+    router.get('/api/rooms', (req, res) => {
+        this.Rooms.retrieveRooms(res);
+    });
+
+    router.get('/api/rooms/:roomID', (req, res) => {
+        var id = parseInt(req.params.roomID);
+	console.log('Query room with id: ' + id);
+        this.Rooms.retrieveSingleRoom(res, {roomID: id});
+    });
+
+    router.get('/api/chats/:toRoom', (req, res) => {
+        var id = parseInt(req.params.toRoom);
+	console.log('Query single list with id: ' + id);
+        this.Chats.retrieveRoomChats(res, {toRoom: id});
+    });
+
+    router.get('/api/search',(req,res)=>{
+	var urlParts = url.parse(req.url,true);
+	var query = urlParts.query;
+	var msg = "search for " + query.q;
+	console.log(msg);
+	this.Rooms.search(res, {keywords: {$regex: query.q}}).then((list) =>{
+          res.send(list);
+        });
+    });
+
+    //Post Routes
+
+    router.post('/api/newroom',(req,res)=>{
+      this.Rooms.newRoom(res, req).then((list) =>{
+        res.send(list);
+      });
+    });
+
+    router.post('/api/newchat',(req,res)=>{
+      this.Chats.newChat(res, req).then((list) =>{
+        res.send(list);
+      });
+    });
+
+    //express routes
+
+    this.express.use('/', router);
+    //this.express.use('/', express.static(__dirname+'/pages'));
+    //this line below is probably wrong
+    this.express.use('/', express.static(__dirname+'/dist'));
+  }
+
+}
+
+export default new App().express;

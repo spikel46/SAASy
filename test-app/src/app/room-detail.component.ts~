@@ -1,0 +1,33 @@
+import 'rxjs/add/operator/switchMap';
+
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
+
+import { Room } from './room';
+import { RoomsService } from './rooms.service';
+
+@Component({
+  selector: 'room-detail',
+  templateUrl: './room-detail.component.html',
+  styleUrls: [ './room-detail.component.css' ]
+})
+export class RoomDetailComponent implements OnInit {
+  room: Room;
+  
+  constructor(
+    private roomsService: RoomsService,
+    private route: ActivatedRoute,
+    private location: Location
+  ) {}
+
+  ngOnInit(): void {
+    this.route.params
+        .switchMap((params: Params) => this.roomsService.getRoom(+params['roomID']))
+	.subscribe(room => this.room = room);
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+}

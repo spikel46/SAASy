@@ -1,0 +1,7 @@
+<div class="chatbox-messages" id="chat-msg">
+  <ul>
+    <li *ngFor="let chat of chats">
+      {{ chat.sender }}: {{chat.content}}
+    </li>
+  </ul>
+</div>-

@@ -1,0 +1,54 @@
+import { Room } from './room';
+
+export const ROOMS: Room[] = [
+ {
+   roomID : 1,
+   isActive : true,
+   isPublic : true,
+   description : "Engineers Chat Room",
+   users : ["Joey", "Tymon", "Dominic"],
+   moderators : ["Dominic"],
+   admin: "Joey",
+   keywords: ["Science","Math", "EE"]
+ },
+ {
+   roomID : 2,
+   isActive : true,
+   isPublic : true,
+   description : "Social Workers Chat Room",
+   users : ["Cher", "Ana"],
+   moderators : [],
+   admin: "Cher",
+   keywords: ["Helpful","Charity", "Support"]
+ },
+ {
+   roomID: 3,
+   isActive: true,
+   isPublic: true,
+   description: "Gamers Chat Room",
+   users: ["Ry", "Ra", "Rin"],
+   moderators: ["Rin"],
+   admin: "Ry",
+   keywords: ["Nerds", "#gamerlyfe", "#willanyoneseethis"]
+ },
+ {
+   roomID: 4,
+   isActive: true,
+   isPublic: true,
+   description: "Musicians Chat Room",
+   users: ["Chopin", "Mozart", "Beethoven"],
+   moderators: ["Chopin","Mozart"],
+   admin: "Beethoven",
+   keywords: ["Piano", "Violin", "Kazoo"]
+ },
+ {
+   roomID: 5,
+   isActive: true,
+   isPublic: true,
+   description: "Recipes Chat Room",
+   users: ["Gordon", "Boyardee", "BadNBoujee"],
+   moderators: ["Gordon"],
+   admin: "BadNBoujee",
+   keywords: ["Piano", "Violin", "Kazoo"]
+ }
+];

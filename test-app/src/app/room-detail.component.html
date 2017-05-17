@@ -1,0 +1,31 @@
+<div *ngIf="room" class="why">
+  <h2 style="margin-top:0; text-align:center;">Room {{room.roomID}}: {{room.title}}</h2>
+
+  <div class="row why2">
+    <!--left side toolbar/info-->
+    <div class="col-md-3 toolbar">
+	<div>
+	  <label>ID:</label> {{room.roomID}}<br />
+	  <label>Description:</label> {{room.description}}<br />
+	  <label>Active:</label> {{room.isActive}}<br />
+	  <label>Public:</label> {{room.isPublic}}<br />
+	  <label>Moderators:</label> {{room.moderators}}<br />
+	  <label>Keywords:</label> {{room.keywords}}<br />
+	  <label>Admin:</label>
+	  <input [(ngModel)]="room.admin" placeholder="admin" />
+	</div>
+	<button (click)="goBack()">Back</button>
+    </div><!-- end left side toolbar/info-->
+
+    <!-- center chatbox -->
+    <div class="col-md-6 why3">
+      <app-chats [id]="room.roomID"></app-chats>
+    </div> <!-- end of middle column -->
+
+    <!--right side users -->
+    <div class="col-md-3 users">
+      <label>Users:</label> {{room.users}}
+    </div>
+
+   </div><!--closes row -->
+</div>

@@ -1,0 +1,18 @@
+import { Injectable } from '@angular/core';
+
+import { Room }  from './room';
+import { ROOMS } from './mock-rooms';
+
+@Injectable()
+export class RoomsService {
+  constructor() { }
+
+  getRooms(): Promise<Room[]> {
+    return Promise.resolve(ROOMS);
+  }
+  
+  getRoom(roomID: number): Promise<Room> {
+    return this.getRooms()
+    	       .then(rooms => rooms.find(room => room.roomID === roomID));
+  }
+}

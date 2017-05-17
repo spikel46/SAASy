@@ -1,0 +1,55 @@
+<div *ngIf="room">
+  <h2 align="center">Room {{room.roomID}}: {{room.title}}</h2>
+
+  <div class="row full-page">
+    <!--left side toolbar/info-->
+    <div class="col-md-3">
+      <div class="toolbar">
+	<div>
+	  <label>ID:</label> {{room.roomID}}<br />
+	  <label>Description:</label> {{room.description}}<br />
+	  <label>Active:</label> {{room.isActive}}<br />
+	  <label>Public:</label> {{room.isPublic}}<br />
+	  <label>Moderators:</label> {{room.moderators}}<br />
+	  <label>Keywords:</label> {{room.keywords}}<br />
+	  <label>Admin:</label>
+	  <input [(ngModel)]="room.admin" placeholder="admin" />
+	</div>
+	<button (click)="goBack()">Back</button>
+      </div>
+    </div><!-- end left side toolbar/info-->
+
+    <!-- center chatbox -->
+    <div class="col-md-6">
+
+      <div class="chatbox">
+
+	<div class="chatbox-header">
+	  <h3 class="chat-topic">Group Chat</h3>
+	</div>
+	
+	<div class="chatbox-body">
+	  <div class="chatbox-messages" id="chat-msg">
+	    Messages go here.
+	  </div>
+	</div> <!-- end of chat body -->
+	
+	<div class="chatbox-footer">
+	  <div class="input-group">
+	    <input type="text" name="message" placeholder="Type Something..." class="form-control">
+	    <span class="input-group-btn">
+	      <button type="button" class="btn btn-primary btn-flat">Send</button>
+	    </span>
+	  </div>
+	</div><!-- end of chat footer -->
+
+      </div><!-- end of chatbox-->
+    </div> <!-- end of middle column -->
+
+    <!--right side users -->
+    <div class="col-md-3 users">
+      <label>Users:</label> {{room.users}}
+    </div>
+
+   </div><!--closes row -->
+</div>
