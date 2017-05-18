@@ -12,7 +12,7 @@ export class RoomsService {
 
   constructor(private http: Http) { }
 
-  private roomsUrl = '/api/rooms';
+  private roomsUrl = 'http://localhost:8080/api/rooms';
 
   getRooms(): Promise<Room[]> {
     return this.http.get(this.roomsUrl)

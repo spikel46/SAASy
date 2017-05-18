@@ -15,10 +15,10 @@ import { CHATS } from './mock-chats';
 export class ChatsService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private chatsUrl = '/api/chats';
-  private postChatUrl = '/api/newchat';
+  private chatsUrl = 'http://localhost:8080/api/chats';
+  private postChatUrl = 'http://localhost:8080/api/newchat';
 
-  private temp_user = "Joey";
+  private temp_user = "Not-Joey";
   private curr_time = new Date();
   private rating = 30; 
   private socket:any;

@@ -8,15 +8,33 @@
       <li *ngFor="let chat of chats">
 	<div *ngIf="chat.sender === 'Joey'">
 	  <div class="chatbox-messages-sent" id="chat-msg">
+            <div class="message-rating input-group-btn">
+              <button class="btn btn-default btn-xs" id="up-btn" type="submit">
+	        <i class="glyphicon glyphicon-thumbs-up"></i>
+	      </button>
+              <button class="btn btn-default btn-xs" id="down-btn" type="submit">
+	        <i class="glyphicon glyphicon-thumbs-down"></i>
+	      </button>
+            </div>
 	    <p class="sender"> {{chat.sender}}: </p>
 	    <p class="content"> {{chat.content}} </p>
+            <p class="score"> {{ chat.score }} </p>
 	    <p class="date"> {{chat.timestamp | date:"short"}}</p>
 	  </div>
 	</div>
 	<div *ngIf="chat.sender !== 'Joey'">
 	  <div class="chatbox-messages-recieved" id="chat-msg">
 	    <p class="sender"> {{chat.sender}}: </p>
+            <div class="message-rating input-group-btn">
+              <button class="btn btn-default btn-xs" id="up-btn" type="submit">
+	        <i class="glyphicon glyphicon-thumbs-up"></i>
+	      </button>
+              <button class="btn btn-default btn-xs" id="down-btn" type="submit">
+	        <i class="glyphicon glyphicon-thumbs-down"></i>
+	      </button>
+            </div>
 	    <p class="content"> {{chat.content}} </p>
+            <p class="score"> {{ chat.score }} </p>
 	    <p class="date"> {{chat.timestamp | date:"short"}}</p>
 	  </div>
 	</div>
