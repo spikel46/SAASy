@@ -38,11 +38,12 @@ class App {
   private routes(): void {
     let router = express.Router();
     
-    router.use( (req, res, next) => {
-        res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-        next();
-    });
+  router.use( (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "PUT");
+  next();
+  });
 
 
     //Get Routes
@@ -85,6 +86,24 @@ class App {
       this.Chats.newChat(res, req).then((list) =>{
         res.send(list);
       });
+    });
+
+
+    //Put Routes
+    router.put('/api/chats/:id/upvote',(req,res)=>{
+      console.log("hi");
+      this.Chats.upvote(res,req).then((list)=>{
+        res.send(list);
+      });
+      console.log("bye");
+    });
+
+    router.put('/api/chats/:id/downvote',(req,res)=>{
+      console.log("hi");
+      this.Chats.downvote(res,req).then((list)=>{
+        res.send(list);
+      });
+      console.log("bye");
     });
 
     //express routes

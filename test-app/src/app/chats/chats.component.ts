@@ -45,10 +45,15 @@ export class ChatsComponent implements OnInit {
   }
   upvote(up_chat: Chat): void {
     console.log("Up: " + up_chat["_id"]);
+    this.chatsService.sendUpvote(up_chat)
+        .then(chat => this.chat = chat);
   }
   downvote(down_chat: Chat): void {
     console.log("Down: " + down_chat["_id"]);
+    this.chatsService.sendDownvote(down_chat)
+        .then(chat => this.chat = chat);
   }
+  
   
 
 }

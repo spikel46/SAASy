@@ -64,6 +64,25 @@ export class ChatsService {
     return observable;
   } 
 
+  sendUpvote(up_chat: Chat): Promise<Chat> {
+    return this.http.put(this.chatsUrl+'/'+ up_chat["_id"] + '/upvote',
+                         JSON.stringify(up_chat),
+			 {headers: this.headers})
+               .toPromise()
+	       .then(response => response.json() as Chat)
+	       .catch(this.handleError);
+  }
+
+  sendDownvote(down_chat: Chat): Promise<Chat> {
+    return this.http.put(this.chatsUrl+'/' + down_chat["_id"] + '/downvote',
+                         JSON.stringify(down_chat),
+			 {headers: this.headers})
+               .toPromise()
+	       .then(response => response.json() as Chat)
+	       .catch(this.handleError);
+  }
+
+  
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);

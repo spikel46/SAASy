@@ -30,6 +30,7 @@ var App = (function () {
         router.use(function (req, res, next) {
             res.header("Access-Control-Allow-Origin", "*");
             res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            res.header("Access-Control-Allow-Methods", "PUT");
             next();
         });
         //Get Routes
@@ -65,6 +66,21 @@ var App = (function () {
             _this.Chats.newChat(res, req).then(function (list) {
                 res.send(list);
             });
+        });
+        //Put Routes
+        router.put('/api/chats/:id/upvote', function (req, res) {
+            console.log("hi");
+            _this.Chats.upvote(res, req).then(function (list) {
+                res.send(list);
+            });
+            console.log("bye");
+        });
+        router.put('/api/chats/:id/downvote', function (req, res) {
+            console.log("hi");
+            _this.Chats.downvote(res, req).then(function (list) {
+                res.send(list);
+            });
+            console.log("bye");
         });
         //express routes
         this.express.use('/', router);

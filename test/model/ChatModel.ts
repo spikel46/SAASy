@@ -8,8 +8,10 @@ var mongooseConnection = DataAccess.mongooseConnection;
 export default class ChatModel {
     public schema:Mongoose.Schema;
     public model:any;
-
+    public ObjectId:any;
+    
     public constructor() {
+        this.ObjectId = mongoose.Schema.ObjectId;
         this.createSchema();
         this.createModel();
     }
@@ -60,4 +62,25 @@ export default class ChatModel {
         return response;
     }
 
+    public upvote(response:any, req) {
+        var comm_id = req.body._id;
+    	var query = this.model.findOne({_id: comm_id});
+	query.exec( (err, messageObj) => {
+	    messageObj.score = messageObj.score+1;
+	    messageObj.save();
+        });
+        var response = this.model.find({_id: comm_id});
+        return response;
+    }
+    
+    public downvote(response:any, req) {
+        var comm_id = req.body._id;
+    	var query = this.model.findOne({_id: comm_id});
+	query.exec( (err, messageObj) => {
+	    messageObj.score = messageObj.score-1;
+	    messageObj.save();
+        });
+        var response = this.model.find({_id: comm_id});
+        return response;
+    }
 }

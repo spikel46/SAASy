@@ -5,6 +5,7 @@ var mongoose = DataAccess_1["default"].mongooseInstance;
 var mongooseConnection = DataAccess_1["default"].mongooseConnection;
 var ChatModel = (function () {
     function ChatModel() {
+        this.ObjectId = mongoose.Schema.ObjectId;
         this.createSchema();
         this.createModel();
     }
@@ -45,6 +46,26 @@ var ChatModel = (function () {
             }
         });
         var response = this.model.find({ toRoom: RoomID });
+        return response;
+    };
+    ChatModel.prototype.upvote = function (response, req) {
+        var comm_id = req.body._id;
+        var query = this.model.findOne({ _id: comm_id });
+        query.exec(function (err, messageObj) {
+            messageObj.score = messageObj.score + 1;
+            messageObj.save();
+        });
+        var response = this.model.find({ _id: comm_id });
+        return response;
+    };
+    ChatModel.prototype.downvote = function (response, req) {
+        var comm_id = req.body._id;
+        var query = this.model.findOne({ _id: comm_id });
+        query.exec(function (err, messageObj) {
+            messageObj.score = messageObj.score - 1;
+            messageObj.save();
+        });
+        var response = this.model.find({ _id: comm_id });
         return response;
     };
     return ChatModel;
