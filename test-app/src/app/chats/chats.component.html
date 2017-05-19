@@ -9,10 +9,10 @@
 	<div *ngIf="chat.sender === 'Joey'">
 	  <div class="chatbox-messages-sent" id="chat-msg">
             <div class="message-rating input-group-btn">
-              <button class="btn btn-default btn-xs" id="up-btn" type="submit">
+              <button class="btn btn-default btn-xs" id="up-btn" (click)="upvote(chat)">
 	        <i class="glyphicon glyphicon-thumbs-up"></i>
 	      </button>
-              <button class="btn btn-default btn-xs" id="down-btn" type="submit">
+              <button class="btn btn-default btn-xs" id="down-btn" (click)="downvote(chat)">
 	        <i class="glyphicon glyphicon-thumbs-down"></i>
 	      </button>
             </div>
@@ -26,10 +26,10 @@
 	  <div class="chatbox-messages-recieved" id="chat-msg">
 	    <p class="sender"> {{chat.sender}}: </p>
             <div class="message-rating input-group-btn">
-              <button class="btn btn-default btn-xs" id="up-btn" type="submit">
+              <button class="btn btn-default btn-xs" id="up-btn" (click)="upvote(chat)">
 	        <i class="glyphicon glyphicon-thumbs-up"></i>
 	      </button>
-              <button class="btn btn-default btn-xs" id="down-btn" type="submit">
+              <button class="btn btn-default btn-xs" id="down-btn" (click)="downvote(chat)">
 	        <i class="glyphicon glyphicon-thumbs-down"></i>
 	      </button>
             </div>

@@ -43,6 +43,13 @@ export class ChatsComponent implements OnInit {
     this.chatsService.sendChat(message, this.id)
         .then(chat => this.chat = chat);
   }
+  upvote(up_chat: Chat): void {
+    console.log("Up: " + up_chat["_id"]);
+  }
+  downvote(down_chat: Chat): void {
+    console.log("Down: " + down_chat["_id"]);
+  }
+  
 
 }
 

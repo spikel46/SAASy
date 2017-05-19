@@ -19,6 +19,14 @@
     height: 68vh;
 }
 
+/*use this genius to get chat info */
+.messages li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+
+
 .messages{
     list-style-type: none; /*removes bullet points */
     padding:0;
@@ -64,17 +72,14 @@
 
 .chatbox-messages-sent .message-rating{
     position:absolute;
-    display:inline;
+    display:inline-block;
     left:7px;
     top:5px;
 }
 
 .chatbox-messages-recieved .message-rating{
     margin:0px 0px 0px 0px;
-    position:absolute;
-    display:inline;
-    right: 50px;
-    top:5px;
+    display:inline-block;
 }
 
 #up-btn{
