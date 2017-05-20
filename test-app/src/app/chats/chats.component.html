@@ -44,9 +44,9 @@
   
   <div class="chatbox-footer">
     <div class="input-group">
-      <input type="text" id="msg-input" placeholder="Type Something..." class="form-control" #messageContent />
+      <input #messageContent id="msg-input" placeholder="Type Something..." class="form-control"  (keyup.enter)="add(messageContent.value); messageContent.value='';"/>
       <span class="input-group-btn">
-      <button (click)="add(messageContent.value); messageContent.value=''" id="msg-btn" class="btn btn-primary btn-flat">
+      <button (click)="add(messageContent.value); messageContent.value='';" id="msg-btn" class="btn btn-primary btn-flat">
         Send
       </button>
       </span>
