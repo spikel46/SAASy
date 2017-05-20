@@ -1,0 +1,36 @@
+var chai = require('chai');
+var chaiHttp = require('chai-http');
+var mongoose = require("mongoose");
+
+var server = "http://localhost:8080";
+//var Blob = require("../server/models/blob");
+
+var should = chai.should();
+chai.use(chaiHttp);
+
+
+describe('Rooms', function() {
+  it('should list ALL blobs on /blobs GET', function(done) {
+      chai.request(server)
+	  .get('/api/rooms')
+	  .end(function(err, res){
+              res.should.have.status(200);
+              res.should.be.json;
+              res.body.should.be.a('array');
+              res.body[0].should.have.property('_id');
+              res.body[0].should.have.property('title');
+              res.body[0].should.have.property('description');
+              done();
+	  });
+  });
+});
+    
+var assert = require('assert');
+describe('Array', function() {
+  describe('#indexOf()', function() {
+    it('should return -1 when the value is not present', function() {
+      assert.equal(-1, [1,2,3].indexOf(4));
+    });
+  });
+});
+
