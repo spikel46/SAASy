@@ -1,31 +1,33 @@
-<div *ngIf="room" class="why">
-  <h2 style="margin-top:0; text-align:center;">Room {{room.roomID}}: {{room.title}}</h2>
-
-  <div class="row why2">
+<div *ngIf="room" class="room-content">
+  <div class="room-header">
+    <h2 style="margin-top:10px;">Room {{room.roomID}}: {{room.title}}</h2>
+  </div>
+  <div class="room-container">
     <!--left side toolbar/info-->
     <div class="col-md-3 toolbar">
-	<div>
-	  <label>ID:</label> {{room.roomID}}<br />
-	  <label>Description:</label> {{room.description}}<br />
-	  <label>Active:</label> {{room.isActive}}<br />
-	  <label>Public:</label> {{room.isPublic}}<br />
-	  <label>Moderators:</label> {{room.moderators}}<br />
-	  <label>Keywords:</label> {{room.keywords}}<br />
-	  <label>Admin:</label>
-	  <input [(ngModel)]="room.admin" placeholder="admin" />
-	</div>
-	<button (click)="goBack()">Back</button>
+      <div>
+	<h2> Settings: </h2>
+	<label>ID:</label> {{room.roomID}}<br />
+	<label>Description:</label> {{room.description}}<br />
+	<label>Active:</label> {{room.isActive}}<br />
+	<label>Public:</label> {{room.isPublic}}<br />
+	<label>Moderators:</label> {{room.moderators}}<br />
+	<label>Keywords:</label> {{room.keywords}}<br />
+	<label>Admin:</label>
+	<input [(ngModel)]="room.admin" placeholder="admin" />
+      </div>
+      <button (click)="goBack()">Back</button>
     </div><!-- end left side toolbar/info-->
-
+    
     <!-- center chatbox -->
-    <div class="col-md-6 why3">
+    <div class="col-md-6 room-core">
       <app-chats [id]="room.roomID"></app-chats>
     </div> <!-- end of middle column -->
-
+    
     <!--right side users -->
     <div class="col-md-3 users">
       <label>Users:</label> {{room.users}}
     </div>
-
-   </div><!--closes row -->
-</div>
+    
+  </div><!-- end of room container -->
+</div><!-- end of room content-->

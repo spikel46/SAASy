@@ -29,7 +29,7 @@ export class ChatsService {
       console.log(content_str, roomID);
       this.socket.emit('add-Chat', content_str);
       return this.http.post(this.postChatUrl,
-	JSON.stringify({sender: this.temp_user,
+      	JSON.stringify({sender: this.temp_user,
 		        toRoom: roomID,
 			content: content_str,
 			timestamp: this.curr_time,

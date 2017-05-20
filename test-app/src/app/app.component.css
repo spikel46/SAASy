@@ -27,10 +27,8 @@ nav a.active {
   color: #039be5;
 }*/
 .app-pages{
-  position:relative;
-  height:91%;
+  height:100%;
   width:100%;
-  /*
-  background-color:red;
-  */
+  margin:0;
+  background-color: red;
 }
