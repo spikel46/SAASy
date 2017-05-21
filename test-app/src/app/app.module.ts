@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ChatsService } from './chats/chats.service';
 import { ChatsComponent } from './chats/chats.component';
 import { HomeComponent } from './home/home.component';
+import { RoomSearchComponent } from './room-search/room-search.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HomeComponent } from './home/home.component';
     RoomDetailComponent,
     RoomsComponent,
     ChatsComponent,
-    HomeComponent
+    HomeComponent,
+    RoomSearchComponent
   ],
   imports: [
     BrowserModule,

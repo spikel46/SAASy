@@ -49,12 +49,12 @@ export default class RoomModel {
     }
 
     public search(response:any, query) {
-	    console.log(query);
-        var response = this.model.find(query);
-        /*query.exec( (err, itemArray) => {
+    	console.log(query);
+        var query = this.model.find(query);
+        query.exec( (err, itemArray) => {
             response.json(itemArray);
-        });*/
-	    return response;
+        });
+	return response;
     }
     public newRoom(response:any, req) {
         var id = req.body.roomId;

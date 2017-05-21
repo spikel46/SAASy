@@ -38,10 +38,10 @@ var RoomModel = (function () {
     };
     RoomModel.prototype.search = function (response, query) {
         console.log(query);
-        var response = this.model.find(query);
-        /*query.exec( (err, itemArray) => {
+        var query = this.model.find(query);
+        query.exec(function (err, itemArray) {
             response.json(itemArray);
-        });*/
+        });
         return response;
     };
     RoomModel.prototype.newRoom = function (response, req) {

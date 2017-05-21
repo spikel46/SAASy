@@ -12,20 +12,27 @@ export class RoomsService {
 
   constructor(private http: Http) { }
 
-  private roomsUrl = 'http://localhost:8080/api/rooms';
+  private roomsUrl = 'http://localhost:8080';
 
   getRooms(): Promise<Room[]> {
-    return this.http.get(this.roomsUrl)
+    return this.http.get(this.roomsUrl+'/api/rooms')
                .toPromise()
                .then(response => response.json() as Room[])
                .catch(this.handleError);
   }
   
   getRoom(roomID: number): Promise<Room> {
-    return this.http.get(this.roomsUrl+'/'+roomID)
+    return this.http.get(this.roomsUrl+'/api/rooms/'+roomID)
                .toPromise()
                .then(response => response.json() as Room)
                .catch(this.handleError);
+  }
+
+  searchRooms(query: string): Promise<Room[]>{
+    return this.http.get(this.roomsUrl+'/api/search/'+query)
+               .toPromise()
+	       .then(response => response.json() as Room[])
+	       .catch(this.handleError);
   }
   
   private handleError(error: any): Promise<any> {

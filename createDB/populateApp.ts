@@ -67,17 +67,7 @@ function importRoomData(db){
  	  }
 	 ]	 
 
-	 db.createCollection("Rooms",
-	     {
-	         validator: { $or:
-                     [
-                         { roomID: { $type: "number" } },
-                         { isActive: { $type: "bool" } },
-                         { isPublic: { $type: "bool" } }
-                     ]
-                 }
-	     }
-         );
+	 db.createCollection("Rooms");
 
 	 for(var i = 0; i< list.length; i++){    
    	     /*print('Collection: ' + collections[i]);*/
@@ -88,7 +78,7 @@ function importRoomData(db){
 	 db.getCollection("Rooms").find().forEach(printjson);
 }
 function importChatsData(db){
-
+         
 	 let list: any[] = [
 	 {
              sender: "Joey",
@@ -99,179 +89,112 @@ function importChatsData(db){
          },
 	 {
              sender: "Dom",
-	     toRoom: 2,
+	     toRoom: 1,
 	     content: "hi joey",
 	     timestamp: "2017-05-16T21:13:32.270Z",
-	     score: 10
-         },
-	 {
-             sender : "Joey2",
-	     toRoom : 3,
-	     content : "Maymays",
-	     timestamp : "2017-05-16T21:13:32.270Z",
-	     score : 10
-         },
-	 {
-             sender: "Tymon",
-	     toRoom: 4,
-	     content: "Mr. SunBeam",
-	     timestamp: "2017-05-16T21:13:32.270Z",
-	     score: 10
-         },
-	 {
-             sender : "Joey5",
-	     toRoom : 2,
-	     content : "this message is a test",
-	     timestamp : "2017-05-16T21:13:32.270Z",
-	     score : 10
-         },{
-             sender: "Joey",
-	     toRoom: 2,
-	     content: "crazy how all these messages have the same timestamp which isn't currently displayed",
-	     timestamp: "2017-05-16T21:13:32.270Z",
-	     score: 10
-         },
-	 {
-             sender: "Tymon",
-	     toRoom: 5,
-	     content: "this message is a test",
-	     timestamp: "2017-05-16T21:13:32.270Z",
-	     score: 10
-         },
-	 {
-             sender: "Dominic",
-	     toRoom: 5,
-	     content: "this message is a test",
-	     timestamp: "2017-05-15T21:10:32.270Z",
-	     score: 10
-         },
-	 {
-             sender: "Joey",
-	     toRoom: 5,
-	     content: "this message is a test",
-	     timestamp: "2017-05-15T21:10:32.270Z",
-	     score: 10
-         },
-	 {
-             sender: "Joey",
-	     toRoom: 5,
-	     content: "this message is a test",
-	     timestamp: "2017-05-15T21:10:32.270Z",
-	     score: 10
-         },
-	 {
-             sender: "Joey",
-	     toRoom: 1,
-	     content: "this message is a test",
-	     timestamp: "2017-05-15T21:10:32.270Z",
-	     score: 10
-         },
-	 {
-             sender: "Joey",
-	     toRoom: 4,
-	     content: "this message is a test",
-	     timestamp: "2017-05-15T21:10:32.270Z",
-	     score: 10
-         },
-	 {
-             sender: "Joey",
-	     toRoom: 4,
-	     content: "this message is a test",
-	     timestamp: "2017-05-15T21:10:32.270Z",
-	     score: 10
-         },
-	 {
-             sender: "Joey",
-	     toRoom: 3,
-	     content: "this message is a test",
-	     timestamp: "2017-05-15T21:11:32.270Z",
-	     score: 10
-         },
-	 {
-             sender: "Joey",
-	     toRoom: 3,
-	     content: "this message is a test",
-	     timestamp: "2017-05-15T21:11:32.270Z",
-	     score: 10
-         },
-	 {
-             sender: "Joey",
-	     toRoom: 2,
-	     content: "this message is a test",
-	     timestamp: "2017-05-15T21:11:32.270Z",
-	     score: 10
-         },
-	 {
-             sender: "Joey",
-	     toRoom: 2,
-	     content: "this message is a test",
-	     timestamp: "2017-05-15T21:11:32.270Z",
-	     score: 10
-         },
-	 {
-             sender: "Joey",
-	     toRoom: 3,
-	     content: "this message is a test",
-	     timestamp: "2017-05-15T21:11:32.270Z",
-	     score: 10
-         },
-	 {
-             sender: "Joey",
-	     toRoom: 4,
-	     content: "this message is a test",
-	     timestamp: "2000-05-15T21:11:32.270Z",
-	     score: 10
-         },
-	 {
-             sender: "Joey",
-	     toRoom: 4,
-	     content: "this message is a test",
-	     timestamp: "2000-05-15T21:11:32.270Z",
-	     score: 10
-         },
-	 {
-             sender: "Joey",
-	     toRoom: 5,
-	     content: "this message is a test",
-	     timestamp: "2000-05-15T21:11:32.270Z",
-	     score: 10
-         },
-	 {
-             sender: "Joey",
-	     toRoom: 5,
-	     content: "this message is a test",
-	     timestamp: "2000-05-15T21:11:32.270Z",
-	     score: 10
-         },
-	 {
-             sender: "Joey",
-	     toRoom: 5,
-	     content: "keep doing this",
-	     timestamp: "2000-05-15T21:11:32.270Z",
 	     score: 0
-         }]	 
-
-	 db.createCollection("Chats",
-	     {
-	         validator: { $or:
-                     [
-                         { sender: { $type: "string" } },
-                         { toRoom: { $type: "bool" } },
-                         { timestamp: { $type: "date" } }
-                     ]
-                 }
-	     }
-         );
+         },
+	 {
+             sender: "Tymon",
+	     toRoom: 1,
+	     content: "Hi guys",
+	     timestamp: "2017-05-16T21:13:32.270Z",
+	     score: 0
+         },
+	 {
+             sender: "Joey2",
+	     toRoom: 1,
+	     content: "I def didn't copy past these",
+	     timestamp: "2017-05-16T21:13:32.270Z",
+	     score: 10
+         },
+	 {
+             sender: "Dom2",
+	     toRoom: 1,
+	     content: "liar",
+	     timestamp: "2017-05-16T21:13:32.270Z",
+	     score: 0
+         },
+	 {
+             sender: "Tymon2",
+	     toRoom: 2,
+	     content: "truther",
+	     timestamp: "2017-05-16T21:13:32.270Z",
+	     score: 0
+         },
+	 {
+             sender: "Joey3",
+	     toRoom: 3,
+	     content: "this message is a test",
+	     timestamp: "2017-05-16T21:13:32.270Z",
+	     score: 10
+         },
+	 {
+             sender: "Dom3",
+	     toRoom: 3,
+	     content: "we should have wrote a script to output this",
+	     timestamp: "2017-05-16T21:13:32.270Z",
+	     score: 0
+         },
+	 {
+             sender: "Tymon3",
+	     toRoom: 3,
+	     content: "yeah we messed up",
+	     timestamp: "2017-05-16T21:13:32.270Z",
+	     score: 0
+         },
+	 {
+             sender: "Joey4",
+	     toRoom: 4,
+	     content: "...",
+	     timestamp: "2017-05-16T21:13:32.270Z",
+	     score: 10
+         },
+	 {
+             sender: "Dom4",
+	     toRoom: 4,
+	     content: "sigh",
+	     timestamp: "2017-05-16T21:13:32.270Z",
+	     score: 0
+         },
+	 {
+             sender: "Tymon4",
+	     toRoom: 4,
+	     content: "only one more!",
+	     timestamp: "2017-05-16T21:13:32.270Z",
+	     score: 0
+         },
+	 {
+             sender: "Joey5",
+	     toRoom: 5,
+	     content: "anyone else notice I always have the most points?",
+	     timestamp: "2017-05-16T21:13:32.270Z",
+	     score: 10
+         },
+	 {
+             sender: "Dom5",
+	     toRoom: 5,
+	     content: "wait what",
+	     timestamp: "2017-05-16T21:13:32.270Z",
+	     score: 0
+         },
+	 {
+             sender: "Tymon5",
+	     toRoom: 5,
+	     content: "omg you suck",
+	     timestamp: "2017-05-16T21:13:32.270Z",
+	     score: 0
+         }]
+	 db.createCollection("Chats");
 
 	 for(var i = 0; i< list.length; i++){    
    	     /*print('Collection: ' + collections[i]);*/
              db.Chats.insert(list[i]);
 	 }
 
-	 /*db.Chats.insert(sample);*/
+	 /*db.Rooms.insert(sample);*/
 	 db.getCollection("Chats").find().forEach(printjson);
 }
-
 
 db = startDB();
 importRoomData(db);

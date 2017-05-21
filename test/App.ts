@@ -49,29 +49,26 @@ class App {
     //Get Routes
 
     router.get('/api/rooms', (req, res) => {
+        console.log('Getting all rooms');
         this.Rooms.retrieveRooms(res);
     });
 
     router.get('/api/rooms/:roomID', (req, res) => {
         var id = parseInt(req.params.roomID);
-	console.log('Query room with id: ' + id);
+	console.log('Look for single Room: ' + id);
         this.Rooms.retrieveSingleRoom(res, {roomID: id});
     });
 
     router.get('/api/chats/:toRoom', (req, res) => {
         var id = parseInt(req.params.toRoom);
-	console.log('Query single list with id: ' + id);
+	console.log('Send Chat to Room: ' + id);
         this.Chats.retrieveRoomChats(res, {toRoom: id});
     });
 
-    router.get('/api/search',(req,res)=>{
-	var urlParts = url.parse(req.url,true);
-	var query = urlParts.query;
-	var msg = "search for " + query.q;
-	console.log(msg);
-	this.Rooms.search(res, {keywords: {$regex: query.q}}).then((list) =>{
-          res.send(list);
-        });
+    router.get('/api/search/:term',(req,res)=>{
+	var term = req.params.term;
+	console.log('Getting search results for: ' + term);
+	this.Rooms.search(res, {keywords: {$regex: term } });
     });
 
     //Post Routes

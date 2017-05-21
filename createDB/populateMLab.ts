@@ -174,7 +174,7 @@ function importChatsData(db){
          },
 	 {
              sender: "Tymon5",
-	     toRoom: 3,
+	     toRoom: 5,
 	     content: "omg you suck",
 	     timestamp: "2017-05-16T21:13:32.270Z",
 	     score: 0

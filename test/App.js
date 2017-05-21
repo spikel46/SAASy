@@ -2,7 +2,6 @@
 exports.__esModule = true;
 var express = require("express");
 var logger = require("morgan");
-var url = require("url");
 var bodyParser = require("body-parser");
 var RoomModel_1 = require("./model/RoomModel");
 var ChatModel_1 = require("./model/ChatModel");
@@ -35,26 +34,23 @@ var App = (function () {
         });
         //Get Routes
         router.get('/api/rooms', function (req, res) {
+            console.log('Getting all rooms');
             _this.Rooms.retrieveRooms(res);
         });
         router.get('/api/rooms/:roomID', function (req, res) {
             var id = parseInt(req.params.roomID);
-            console.log('Query room with id: ' + id);
+            console.log('Look for single Room: ' + id);
             _this.Rooms.retrieveSingleRoom(res, { roomID: id });
         });
         router.get('/api/chats/:toRoom', function (req, res) {
             var id = parseInt(req.params.toRoom);
-            console.log('Query single list with id: ' + id);
+            console.log('Send Chat to Room: ' + id);
             _this.Chats.retrieveRoomChats(res, { toRoom: id });
         });
-        router.get('/api/search', function (req, res) {
-            var urlParts = url.parse(req.url, true);
-            var query = urlParts.query;
-            var msg = "search for " + query.q;
-            console.log(msg);
-            _this.Rooms.search(res, { keywords: { $regex: query.q } }).then(function (list) {
-                res.send(list);
-            });
+        router.get('/api/search/:term', function (req, res) {
+            var term = req.params.term;
+            console.log('Getting search results for: ' + term);
+            _this.Rooms.search(res, { keywords: { $regex: term } });
         });
         //Post Routes
         router.post('/api/newroom', function (req, res) {

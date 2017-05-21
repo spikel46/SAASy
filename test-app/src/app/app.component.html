@@ -29,11 +29,11 @@
 	</ul>
 	<ul class="nav navbar-nav">
 	  <!--nav searchbar -->
-	  <form class="navbar-form inner-center" method="get" action="/search">
+	  <form class="navbar-form inner-center">
 	    <div class="input-group">
-	      <input type="text" class="form-control" placeholder="Search">
+	      <input #searchContent class="form-control" placeholder="Search" (keyup.enter)="searchQuery(searchContent.value); searchContent.value='';"/>
 	      <div class="input-group-btn">
-		<button class="btn btn-default" type="submit">
+		<button class="btn btn-default" (click)="searchQuery(searchContent.value); searchContent.value='';">
 		  <i class="glyphicon glyphicon-search"></i>
 		</button>	    
 	      </div>
@@ -45,3 +45,10 @@
   </nav>
   <router-outlet style="font-size:0"></router-outlet>
 </div>
+
+
+/>
+      <span class="input-group-btn">
+	<button (click)="add(messageContent.value); messageContent.value='';" id="msg-btn" class="btn btn-primary btn-flat">
+          Send
+	</button>
