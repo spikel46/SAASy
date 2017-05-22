@@ -68,7 +68,7 @@ class App {
     router.get('/api/search/:term',(req,res)=>{
 	var term = req.params.term;
 	console.log('Getting search results for: ' + term);
-	this.Rooms.search(res, {keywords: {$regex: term } });
+	this.Rooms.search(res, term);
     });
 
     //Post Routes
@@ -88,19 +88,17 @@ class App {
 
     //Put Routes
     router.put('/api/chats/:id/upvote',(req,res)=>{
-      console.log("hi");
       this.Chats.upvote(res,req).then((list)=>{
         res.send(list);
       });
-      console.log("bye");
+      console.log("Upvoted chat");
     });
 
     router.put('/api/chats/:id/downvote',(req,res)=>{
-      console.log("hi");
       this.Chats.downvote(res,req).then((list)=>{
         res.send(list);
       });
-      console.log("bye");
+      console.log("Downvoted chat");
     });
 
     //express routes

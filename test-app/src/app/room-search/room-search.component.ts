@@ -16,14 +16,12 @@ export class RoomSearchComponent implements OnInit {
   rooms: Room[];
 
   constructor(private route:ActivatedRoute,
-  private roomsService: RoomsService) {
-    console.log("HI: "+ JSON.stringify(this.route.params["_value"]["term"]));
-  }
+  private roomsService: RoomsService) {}
 
   ngOnInit() {
     this.route.params
         .switchMap((params: Params) => this.roomsService.searchRooms(this.route.params["_value"]["term"]))
-        .subscribe(rooms => this.rooms = rooms);
+        .subscribe((rooms) => this.rooms = rooms);
   }
 
 }

@@ -50,7 +50,7 @@ var App = (function () {
         router.get('/api/search/:term', function (req, res) {
             var term = req.params.term;
             console.log('Getting search results for: ' + term);
-            _this.Rooms.search(res, { keywords: { $regex: term } });
+            _this.Rooms.search(res, term);
         });
         //Post Routes
         router.post('/api/newroom', function (req, res) {
@@ -65,18 +65,16 @@ var App = (function () {
         });
         //Put Routes
         router.put('/api/chats/:id/upvote', function (req, res) {
-            console.log("hi");
             _this.Chats.upvote(res, req).then(function (list) {
                 res.send(list);
             });
-            console.log("bye");
+            console.log("Upvoted chat");
         });
         router.put('/api/chats/:id/downvote', function (req, res) {
-            console.log("hi");
             _this.Chats.downvote(res, req).then(function (list) {
                 res.send(list);
             });
-            console.log("bye");
+            console.log("Downvoted chat");
         });
         //express routes
         this.express.use('/', router);

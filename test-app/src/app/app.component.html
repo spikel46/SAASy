@@ -31,10 +31,10 @@
 	  <!--nav searchbar -->
 	  <form class="navbar-form inner-center">
 	    <div class="input-group">
-	      <input #searchContent class="form-control" placeholder="Search" (keyup.enter)="searchQuery(searchContent.value); searchContent.value='';"/>
+	      <input class="form-control" placeholder="Search" (keyup.enter)="searchQuery(searchContent.value); searchContent.value='';" #searchContent/>
 	      <div class="input-group-btn">
 		<button class="btn btn-default" (click)="searchQuery(searchContent.value); searchContent.value='';">
-		  <i class="glyphicon glyphicon-search"></i>
+		  <i class="glyphicon glyphicon-search"></i>-
 		</button>	    
 	      </div>
 	    </div>

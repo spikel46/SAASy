@@ -12,6 +12,7 @@ export class AppComponent {
   constructor(private router:Router){}
 
   searchQuery(term: string): void {
+    if(!term){return;}
     this.router.navigate(['/search',term]);
   }
 }

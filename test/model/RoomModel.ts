@@ -48,9 +48,12 @@ export default class RoomModel {
         });
     }
 
-    public search(response:any, query) {
-    	console.log(query);
-        var query = this.model.find(query);
+    public search(response:any, term:string) {
+        if(term === null){ term=""; }
+        var s_regex = {$regex: term, $options: "si"}
+        var filter = { $or:[ {keywords: s_regex}, {description: s_regex}, {title: s_regex}] } 
+    	console.log(filter);
+        var query = this.model.find(filter);
         query.exec( (err, itemArray) => {
             response.json(itemArray);
         });

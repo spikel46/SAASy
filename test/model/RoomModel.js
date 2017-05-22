@@ -36,9 +36,14 @@ var RoomModel = (function () {
             response.json(itemArray);
         });
     };
-    RoomModel.prototype.search = function (response, query) {
-        console.log(query);
-        var query = this.model.find(query);
+    RoomModel.prototype.search = function (response, term) {
+        if (term === null) {
+            term = "";
+        }
+        var s_regex = { $regex: term, $options: "si" };
+        var filter = { $or: [{ keywords: s_regex }, { description: s_regex }, { title: s_regex }] };
+        console.log(filter);
+        var query = this.model.find(filter);
         query.exec(function (err, itemArray) {
             response.json(itemArray);
         });
