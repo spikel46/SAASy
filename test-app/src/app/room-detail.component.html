@@ -1,21 +1,18 @@
 <div *ngIf="room" class="room-content">
+
   <div class="room-header">
-    <h2 style="margin-top:10px;">Room {{room.roomID}}: {{room.title}}</h2>
+    <h2 style="margin-top:10px;">
+      <button class="btn btn-default btn-xs" id="settings-btn" data-toggle="modal" data-target="#settings-modal">
+	<i class="glyphicon glyphicon-cog"></i>
+      </button>Room {{room.roomID}}: {{room.title}}</h2>
   </div>
+
   <div class="room-container">
     <!--left side toolbar/info-->
     <div class="col-md-3 toolbar">
-      <div>
-	<h2> Settings: </h2>
-	<label>ID:</label> {{room.roomID}}<br />
-	<label>Description:</label> {{room.description}}<br />
-	<label>Active:</label> {{room.isActive}}<br />
-	<label>Public:</label> {{room.isPublic}}<br />
-	<label>Moderators:</label> {{room.moderators}}<br />
-	<label>Keywords:</label> {{room.keywords}}<br />
-	<label>Admin:</label>
-	<input [(ngModel)]="room.admin" placeholder="admin" />
-      </div>
+      <label>Room Title:</label> {{ room.title }}<br />
+      <label>Moderators:</label> {{ room.moderators }}<br />
+      <label>Admin:</label> {{ room.admin }} <br />
       <button (click)="goBack()">Back</button>
     </div><!-- end left side toolbar/info-->
     
@@ -30,4 +27,39 @@
     </div>
     
   </div><!-- end of room container -->
+
+<!-- Settings Modal -->
+<div id="settings-modal" class="modal" role="dialog">
+  <!-- directive should go here to show allowed settings based on user -->
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Settings</h4>
+      </div>
+      <div class="modal-body" #valueOfInterest>
+	<label>Room ID:</label> {{room.roomID}}<br />
+	<label>Description:</label>
+	<input [(ngModel)]="room.description" /><br />
+	<label>Active:</label>
+	<input [(ngModel)]="room.isActive" /><br />
+	<label>Public:</label>
+	<input [(ngModel)]="room.isPublic" /><br />
+	<label>Keywords:</label>
+	<input [(ngModel)]="room.keywords" /><br />
+      </div>
+     <div class="modal-footer">
+       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       <button type="button" class="btn btn-default" data-dismiss="modal" (click)="saveRoom();">Submit</button>
+     </div>
+    </div>
+  </div>
+  
+</div><!--end of modal  -->
+
+
 </div><!-- end of room content-->
+
+
+
