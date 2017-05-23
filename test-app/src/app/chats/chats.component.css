@@ -85,16 +85,12 @@
 
 #up-btn{
     border-top-left-radius: 20px;
-    /*border-top-right-radius: 20px;*/
-    /*border-bottom-right-radius: 20px;*/
     border-bottom-left-radius: 20px;
 }
 
 #down-btn{
-    /*border-top-left-radius: 20px;*/
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    /*border-bottom-left-radius: 20px;*/
 }
 
 .sender{
@@ -110,13 +106,6 @@
 }
 .date{
     font-size:10px;
-}
-
-#settings-btn{
-    border-radius: 6px;
-    display: inline;
-    margin-bottom: 3px;
-    margin-left: 4px;
 }
 
 #msg-input{

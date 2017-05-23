@@ -1,3 +1,14 @@
+.room-page-container{
+    position: absolute; /*within its parent element*/
+    background: rgba(0, 0, 0, 0.75);
+    /*the following 3 lines are what puts stuff in the center*/
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px 10px 10px 10px;
+    overflow: auto;
+}
+
 /*color selected object*/
 .selected {
     background-color: #CFD8DC !important;
@@ -11,7 +22,6 @@
 }
 
 .rooms li {
-
     cursor: pointer;
     position: relative;
     background-color: #EEE; /*turns the bullets white*/
@@ -26,7 +36,6 @@
 }
 
 .rooms .badge {
-
     display: inline-block;
     font-size: small;
     color: white; /*changes text color*/
@@ -34,7 +43,7 @@
     background-color: #607D8B; /*changes background color*/
     line-height: 1em; /* changes number position inside the badge */
     position: relative;
-    top: -4px; /*moves to align the top left corner*/
+    top: -5px; /*moves to align the top left corner*/
     height: 1.8em;
     margin-right: .8em;
     border-radius: 10px 0 0 0;

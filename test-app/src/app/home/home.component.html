@@ -1,3 +1,15 @@
-<p>
-  home works!
-</p>
+<div class="container-fluid bg-1 text-center">
+  <div class="overlay jumbotron">
+    <h1>Quorum Query</h1>
+    <h3>In a universe full of questions, we help find the answers</h3>
+    <!-- custom background-->
+    <div class="input-group">
+      <input class="form-control" placeholder="Search" (keyup.enter)="searchQuery(searchContent.value); searchContent.value='';" #searchContent/>
+      <div class="input-group-btn">
+	<button class="btn btn-default" (click)="searchQuery(searchContent.value); searchContent.value='';">
+	  <i class="glyphicon glyphicon-search"></i>
+	</button>	    
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,7 @@ import * as bodyParser from 'body-parser';
 
 import RoomModel from './model/RoomModel';
 import ChatModel from './model/ChatModel';
+import UserModel from './model/UserModel';
 import DataAccess from './DataAccess';
 
 // Creates and configures an ExpressJS web server.
@@ -15,6 +16,7 @@ class App {
   public express: express.Application;
   public Rooms:RoomModel;
   public Chats:ChatModel;
+  public Users:UserModel;
   public idGenerator:number;
 
   //Run configuration methods on the Express instance.
@@ -25,6 +27,7 @@ class App {
     this.idGenerator = 100;
     this.Rooms = new RoomModel();
     this.Chats = new ChatModel();
+    this.Users = new UserModel();
   }
 
   // Configure Express middleware.
@@ -71,6 +74,10 @@ class App {
 	this.Rooms.search(res, term);
     });
 
+    router.get('/api/login/:user',(req,res)=>{
+        this.Users.tryLogin(res, req);
+    });
+
     //Post Routes
 
     router.post('/api/newroom',(req,res)=>{
@@ -85,6 +92,12 @@ class App {
       });
     });
 
+    router.post('/api/register',(req,res)=>{
+      this.Users.registerUser(res, req).then((list) =>{
+        //redirect?
+        res.send(list);
+      });
+    });
 
     //Put Routes
     router.put('/api/chats/:id/upvote',(req,res)=>{

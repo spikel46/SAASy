@@ -41,3 +41,10 @@
     align-self: stretch;
     justify-self: stretch;
 }
+
+#settings-btn{
+    border-radius: 6px;
+    display: inline;
+    margin-bottom: 3px;
+    margin-left: 4px;
+}

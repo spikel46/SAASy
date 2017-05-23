@@ -1,12 +1,14 @@
-<h2>My Rooms</h2>
-<ul class="rooms">
-  <li *ngFor="let room of rooms"
-    [class.selected]= "room === selectedRoom"
-    (click)="onSelect(room)">
-    <span class="badge">{{room.roomID}}</span> {{room.admin}}
-  </li>
-</ul>
-<div *ngIf="selectedRoom">
-  <h4>Description:</h4>{{selectedRoom.description}}<br />
-  <button (click)="gotoDetail()">View Chatroom</button>
+<div class="room-page-container">
+  <h2 style="color:#FFF;">My Rooms</h2>
+  <ul class="rooms">
+    <li *ngFor="let room of rooms"
+	[class.selected]= "room === selectedRoom"
+	(click)="onSelect(room)">
+      <span class="badge">{{room.roomID}}</span> {{room.title}}
+    </li>
+  </ul>
+  <div *ngIf="selectedRoom">
+    <h4>Description:</h4>{{selectedRoom.description}}<br />
+    <button (click)="gotoDetail()">View Chatroom</button>
+  </div>
 </div>

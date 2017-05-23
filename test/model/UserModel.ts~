@@ -1,0 +1,74 @@
+import Mongoose = require('mongoose');
+import bcrypt = require('bcrypt');
+import DataAccess from '../DataAccess';
+import IRoomModel from '../interfaces/IRoomModel';
+
+var mongoose = DataAccess.mongooseInstance;
+var mongooseConnection = DataAccess.mongooseConnection;
+
+export default class RoomModel {
+    public schema:Mongoose.Schema;
+    public model:any;
+    public SALT_WORK_FACTOR = 10; //used for bcrypt hashing
+
+    public constructor() {
+        this.createSchema();
+        this.createModel();
+    }
+
+    public createSchema(): void {
+        this.schema =  mongoose.Schema(
+            {
+                username: { type: String, required: true, index: {unique: true} },
+    		email: { type: String, required: true},
+    		password: { type: String, required: true },
+    		memberships: [],
+    		owner: [],
+            }, {collection: 'Users'}
+        );
+	this.schema.pre('save', 
+    	{ var user = this;
+      	  // only hash the password if it has been modified (or is new)
+      	  if (!user.isModified('password')) return next();
+
+      	  // generate a salt
+      	  bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+            if (err) return next(err);
+
+            // hash the password along with our new salt
+            bcrypt.hash(user.password, salt, function(err, hash) {
+              if (err) return next(err);
+              
+              // override the cleartext password with the hashed one
+              user.password = hash;
+              next();
+            });
+          });
+      });
+    }
+
+    public createModel(): void {
+        this.model = mongooseConnection.model<IUserModel>("User", this.schema);
+    }
+
+    
+      
+
+    public retrieveUserRooms(response:any, user:string): any {
+        var query = this.model.find({username: user});
+        query.exec( (err, itemArray) => {
+            response.json(itemArray);
+        });
+    
+    public tryLogin(response:any, req:any): any {
+        var user = req.body.username;
+    	var query = this.model.find({username: user});
+        query.exec( (err, result) => {
+            bcrypt.compare(req.body.password, result.password, (err2, isMatch) {
+                if (err2) return err(err2);
+                err(null, isMatch); 
+            });
+	});
+    }
+
+}

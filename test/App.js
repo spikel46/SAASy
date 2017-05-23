@@ -5,6 +5,7 @@ var logger = require("morgan");
 var bodyParser = require("body-parser");
 var RoomModel_1 = require("./model/RoomModel");
 var ChatModel_1 = require("./model/ChatModel");
+var UserModel_1 = require("./model/UserModel");
 // Creates and configures an ExpressJS web server.
 var App = (function () {
     //Run configuration methods on the Express instance.
@@ -15,6 +16,7 @@ var App = (function () {
         this.idGenerator = 100;
         this.Rooms = new RoomModel_1["default"]();
         this.Chats = new ChatModel_1["default"]();
+        this.Users = new UserModel_1["default"]();
     }
     // Configure Express middleware.
     App.prototype.middleware = function () {
@@ -52,6 +54,9 @@ var App = (function () {
             console.log('Getting search results for: ' + term);
             _this.Rooms.search(res, term);
         });
+        router.get('/api/login/:user', function (req, res) {
+            _this.Users.tryLogin(res, req);
+        });
         //Post Routes
         router.post('/api/newroom', function (req, res) {
             _this.Rooms.newRoom(res, req).then(function (list) {
@@ -60,6 +65,12 @@ var App = (function () {
         });
         router.post('/api/newchat', function (req, res) {
             _this.Chats.newChat(res, req).then(function (list) {
+                res.send(list);
+            });
+        });
+        router.post('/api/register', function (req, res) {
+            _this.Users.registerUser(res, req).then(function (list) {
+                //redirect?
                 res.send(list);
             });
         });

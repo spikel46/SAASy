@@ -1,0 +1,28 @@
+.container-fluid{
+    display: flex;
+    flex-direction:column;
+    text-align:center;
+    height: calc(100% - 52px);
+    margin: 0 0 0 0;
+}
+
+.bg-1{
+    position: relative;
+    background-image: url('../../assets/img/HelixNebulaWikimediaCommons.jpg');
+    background-size: cover;
+    background-position:center;
+}
+
+.overlay{
+    position: absolute; /*within its parent element*/
+    
+    border-radius: 10px 10px 10px 10px;
+    /*the following 3 lines are what puts stuff in the center*/
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+ 
+    /*makes the text box and text*/
+    color: white;
+    background: rgba(0, 0, 0, 0.75);
+}

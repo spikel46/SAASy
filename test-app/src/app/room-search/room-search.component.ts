@@ -1,7 +1,7 @@
 import 'rxjs/add/operator/switchMap';
 
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Room } from '../room';
 import { RoomsService } from '../rooms.service';
@@ -16,12 +16,21 @@ export class RoomSearchComponent implements OnInit {
   rooms: Room[];
 
   constructor(private route:ActivatedRoute,
+  private router:Router,
   private roomsService: RoomsService) {}
 
   ngOnInit() {
     this.route.params
         .switchMap((params: Params) => this.roomsService.searchRooms(this.route.params["_value"]["term"]))
         .subscribe((rooms) => this.rooms = rooms);
+  }
+
+  onSelect(room: Room): void {
+    this.selectedRoom = room;
+  }
+
+  gotoDetail(): void {
+    this.router.navigate(['/rooms',this.selectedRoom.roomID]);
   }
 
 }
