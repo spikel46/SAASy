@@ -1,15 +1,15 @@
 webpackJsonp([2,4],{
 
-/***/ 114:
+/***/ 117:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(181);
+var content = __webpack_require__(183);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(238)(content, {});
+var update = __webpack_require__(241)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -27,7 +27,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 17:
+/***/ 14:
 /***/ (function(module, exports) {
 
 /*
@@ -84,22 +84,22 @@ module.exports = function() {
 
 /***/ }),
 
-/***/ 181:
+/***/ 183:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(17)();
+exports = module.exports = __webpack_require__(14)();
 // imports
 
 
 // module
-exports.push([module.i, "html, body {\n    height:92vh;\n    width:100vw;\n}\n\n.navbar{\n    margin-bottom: 0px !important;\n    border-radius: 0;\n}\n\n.outer-center{\n    position: relative;\n}\n\n/*used for centering the search in the navbar */\n.inner-center{\n    position: absolute;\n    left: 50%;\n    -webkit-transform: translateX(-50%);\n            transform: translateX(-50%);\n}\n/*\n.homepage{\n    position: relative;\n    background-image: url('./assets/img/bg1.jpg');\n    background-size: cover;\n}\n\n.overlay{\n    position: absolute; /*within its parent element    \n    \n    /*the following 3 lines are what puts stuff in the center\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n \n    //makes the text box and text\n    color: white;\n    background: rgba(0, 0, 0, 0.75);\n}\n*/", ""]);
+exports.push([module.i, "html, body {\n    height:100%;\n    width:100%;\n}\n\n.navbar{\n    margin-bottom: 0px !important;\n    border-radius: 0;\n}\n\n.outer-center{\n    position: relative;\n}\n\n/*used for centering the search in the navbar */\n.inner-center{\n    position: absolute;\n    left: 50%;\n    -webkit-transform: translateX(-50%);\n            transform: translateX(-50%);\n}\n/*\n.homepage{\n    position: relative;\n    background-image: url('./assets/img/bg1.jpg');\n    background-size: cover;\n}\n\n.overlay{\n    position: absolute; /*within its parent element    \n    \n    /*the following 3 lines are what puts stuff in the center\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n \n    //makes the text box and text\n    color: white;\n    background: rgba(0, 0, 0, 0.75);\n}\n*/", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 238:
+/***/ 241:
 /***/ (function(module, exports) {
 
 /*
@@ -352,13 +352,13 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
-/***/ 246:
+/***/ 251:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(114);
+module.exports = __webpack_require__(117);
 
 
 /***/ })
 
-},[246]);
+},[251]);
 //# sourceMappingURL=styles.bundle.js.map

@@ -14,8 +14,7 @@ import { Chat }  from './chat';
 export class ChatsService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private chatsUrl = 'http://localhost:8080/api/chats';
-  private postChatUrl = 'http://localhost:8080/api/newchat';
+  private chatsUrl = '';
 
   private temp_user = "Not-Joey";
   private curr_time = new Date();
@@ -27,7 +26,7 @@ export class ChatsService {
   sendChat(content_str: string, roomID: number): Promise<Chat> {
       console.log(content_str, roomID);
       this.socket.emit('add-Chat', content_str);
-      return this.http.post(this.postChatUrl,
+      return this.http.post(this.chatsUrl+'/api/newchat',
       	JSON.stringify({sender: this.temp_user,
 		        toRoom: roomID,
 			content: content_str,
@@ -40,7 +39,7 @@ export class ChatsService {
   }
 
   getRoomChats(roomID: number): Promise<Chat[]> {
-    return this.http.get(this.chatsUrl+'/'+roomID)
+    return this.http.get(this.chatsUrl+'/api/chats/'+roomID)
                .toPromise()
                .then(response => response.json() as Chat[])
                .catch(this.handleError);
@@ -48,7 +47,7 @@ export class ChatsService {
 
   getChatStream(roomID: number): Observable<Chat>{
     let observable = new Observable(observer => { 
-      this.socket = io('http://localhost:8080');
+      this.socket = io(this.chatsUrl);
       this.socket.on('Chat', (data) => { 
         console.log(data);
         observer.next({sender: this.temp_user,
@@ -64,7 +63,7 @@ export class ChatsService {
   } 
 
   sendUpvote(up_chat: Chat): Promise<Chat> {
-    return this.http.put(this.chatsUrl+'/'+ up_chat["_id"] + '/upvote',
+    return this.http.put(this.chatsUrl+'/api/chats/'+ up_chat["_id"] + '/upvote',
                          JSON.stringify(up_chat),
 			 {headers: this.headers})
                .toPromise()
@@ -73,7 +72,7 @@ export class ChatsService {
   }
 
   sendDownvote(down_chat: Chat): Promise<Chat> {
-    return this.http.put(this.chatsUrl+'/' + down_chat["_id"] + '/downvote',
+    return this.http.put(this.chatsUrl+'/api/chats/' + down_chat["_id"] + '/downvote',
                          JSON.stringify(down_chat),
 			 {headers: this.headers})
                .toPromise()
