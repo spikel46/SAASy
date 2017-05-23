@@ -10,6 +10,8 @@ import { ROOMS } from './mock-rooms';
 @Injectable()
 export class RoomsService {
 
+  //private headers = new Headers({'Content-Type': 'application/json'});
+
   constructor(private http: Http) { }
 
   private roomsUrl = 'http://localhost:8080';
@@ -27,6 +29,15 @@ export class RoomsService {
                .then(response => response.json() as Room)
                .catch(this.handleError);
   }
+  /*
+  update(room: Room): Promise<Room> {
+    return this.http.put(this.roomsUrl + '/api/rooms/' + room.roomID,
+                         JSON.stringify(room),
+			 {headers: this.headers})
+               .toPromise()
+               .then(() => room)
+               .catch(this.handleError);
+  }*/
 
   searchRooms(query: string): Promise<Room[]>{
     return this.http.get(this.roomsUrl+'/api/search/'+query)

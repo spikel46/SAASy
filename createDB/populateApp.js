@@ -97,14 +97,14 @@ function importChatsData(db) {
         },
         {
             sender: "Joey2",
-            toRoom: 1,
-            content: "I def didn't copy past these",
+            toRoom: 2,
+            content: "I def didn't copy paste these",
             timestamp: "2017-05-16T21:13:32.270Z",
             score: 10
         },
         {
             sender: "Dom2",
-            toRoom: 1,
+            toRoom: 2,
             content: "liar",
             timestamp: "2017-05-16T21:13:32.270Z",
             score: 0

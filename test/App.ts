@@ -101,6 +101,12 @@ class App {
       console.log("Downvoted chat");
     });
 
+    router.put('/api/rooms/:id',(req,res)=>{
+     console.log("updating room");
+      this.Rooms.update(res,req);
+      console.log("updated room");
+    });
+
     //express routes
 
     this.express.use('/', router);

@@ -9,7 +9,6 @@ import { Headers, Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 import { Chat }  from './chat';
-import { CHATS } from './mock-chats';
 
 @Injectable()
 export class ChatsService {

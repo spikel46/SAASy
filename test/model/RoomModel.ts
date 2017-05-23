@@ -59,6 +59,7 @@ export default class RoomModel {
         });
 	return response;
     }
+
     public newRoom(response:any, req) {
         var id = req.body.roomId;
         var des = req.body.description;
@@ -81,6 +82,16 @@ export default class RoomModel {
         });
         var response = this.model.find({description: des});
         return response;
-}
+    }
+
+    public update(response:any, req) {
+        console.log(req.body);
+	var filter = {_id: req.body._id};
+	var query = this.model.findOne(filter);
+	this.model.findByIdAndUpdate(req.body._id, { $set: req.body}, { new: true }, function (err, roomObj) {
+          if (err) console.log("Error updating");
+            response.send(roomObj);
+        });
+    }
 
 }

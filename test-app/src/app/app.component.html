@@ -11,7 +11,7 @@
       <div class="collapse navbar-collapse outer-center" id="myNavbar">
 	<ul class="nav navbar-nav navbar-left">
 	  <a class="navbar-brand" href="#">Quorum Query</a>
-          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Home</a></li>
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -34,7 +34,7 @@
 	      <input class="form-control" placeholder="Search" (keyup.enter)="searchQuery(searchContent.value); searchContent.value='';" #searchContent/>
 	      <div class="input-group-btn">
 		<button class="btn btn-default" (click)="searchQuery(searchContent.value); searchContent.value='';">
-		  <i class="glyphicon glyphicon-search"></i>-
+		  <i class="glyphicon glyphicon-search"></i>
 		</button>	    
 	      </div>
 	    </div>
@@ -45,10 +45,3 @@
   </nav>
   <router-outlet style="font-size:0"></router-outlet>
 </div>
-
-
-/>
-      <span class="input-group-btn">
-	<button (click)="add(messageContent.value); messageContent.value='';" id="msg-btn" class="btn btn-primary btn-flat">
-          Send
-	</button>

@@ -71,6 +71,16 @@ var RoomModel = (function () {
         var response = this.model.find({ description: des });
         return response;
     };
+    RoomModel.prototype.update = function (response, req) {
+        console.log(req.body);
+        var filter = { _id: req.body._id };
+        var query = this.model.findOne(filter);
+        this.model.findByIdAndUpdate(req.body._id, { $set: req.body }, { "new": true }, function (err, roomObj) {
+            if (err)
+                console.log("Error updating");
+            response.send(roomObj);
+        });
+    };
     return RoomModel;
 }());
 exports["default"] = RoomModel;

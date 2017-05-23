@@ -31,6 +31,7 @@ export class RoomsComponent implements OnInit{
   }
 
   gotoDetail(): void {
+    console.log('/rooms/'+this.selectedRoom.roomID);
     this.router.navigate(['/rooms',this.selectedRoom.roomID]);
   }
 

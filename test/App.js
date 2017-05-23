@@ -76,6 +76,11 @@ var App = (function () {
             });
             console.log("Downvoted chat");
         });
+        router.put('/api/rooms/:id', function (req, res) {
+            console.log("updating room");
+            _this.Rooms.update(res, req);
+            console.log("updated room");
+        });
         //express routes
         this.express.use('/', router);
         //this.express.use('/', express.static(__dirname+'/pages'));
