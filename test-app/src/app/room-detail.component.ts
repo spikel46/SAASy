@@ -32,12 +32,12 @@ export class RoomDetailComponent implements OnInit {
         .switchMap((params: Params) => this.roomsService.getRoom(+params['roomID']))
 	.subscribe(room => this.room = room);
   }
-  /*
+  
   saveRoom(): void{
     this.roomsService.update(this.room)
       .then(() => window.location.reload(true));
   }
-  */
+  
   goBack(): void {
     this.location.back();
   }
