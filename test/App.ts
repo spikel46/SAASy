@@ -120,12 +120,16 @@ class App {
       console.log("updated room");
     });
 
-    //express routes
 
-    this.express.use('/', router);
-    //this.express.use('/', express.static(__dirname+'/pages'));
-    //this line below is probably wrong
+    router.get('*', (req, res) => {
+       res.sendFile(__dirname + '/dist/index.html');
+    });
+    
+    //express routes
     this.express.use('/', express.static(__dirname+'/dist'));
+    this.express.use('/', router);
+
+    
   }
 
 }

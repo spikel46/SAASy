@@ -92,11 +92,12 @@ var App = (function () {
             _this.Rooms.update(res, req);
             console.log("updated room");
         });
+        router.get('*', function (req, res) {
+            res.sendFile(__dirname + '/dist/index.html');
+        });
         //express routes
-        this.express.use('/', router);
-        //this.express.use('/', express.static(__dirname+'/pages'));
-        //this line below is probably wrong
         this.express.use('/', express.static(__dirname + '/dist'));
+        this.express.use('/', router);
     };
     return App;
 }());
