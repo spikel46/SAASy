@@ -35,7 +35,7 @@ export class RoomDetailComponent implements OnInit {
   
   saveRoom(): void{
     this.roomsService.update(this.room)
-      .then(() => window.location.reload(true));
+      .then(() => console.log("update finished"));
   }
   
   goBack(): void {

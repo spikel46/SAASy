@@ -56,7 +56,12 @@ button {
     border-radius: 4px;
     cursor: pointer;
     cursor: hand;
+    color:black;
 }
 button:hover {
     background-color: #cfd8dc;
+}
+
+.pop-out{
+    color:white;
 }

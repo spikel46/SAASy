@@ -7,7 +7,7 @@
       <span class="badge">{{room.roomID}}</span> {{room.title}}
     </li>
   </ul>
-  <div *ngIf="selectedRoom">
+  <div *ngIf="selectedRoom" class="pop-out">
     <h4>Description:</h4>{{selectedRoom.description}}<br />
     <button (click)="gotoDetail()">View Chatroom</button>
   </div>

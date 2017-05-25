@@ -6,13 +6,15 @@ import { RoomsComponent }      from './rooms.component';
 import { RoomDetailComponent }  from './room-detail.component';
 import { RoomSearchComponent } from './room-search/room-search.component';
 import { HomeComponent } from './home/home.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'rooms/:roomID', component: RoomDetailComponent },
   { path: 'rooms',     component: RoomsComponent },
   { path: 'search/:term', component: RoomSearchComponent },
-  { path: 'home', component: HomeComponent }
+  { path: 'home', component: HomeComponent },
+  { path: 'users', component: UsersComponent }
 ];
 
 @NgModule({

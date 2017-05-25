@@ -13,6 +13,7 @@ import { ChatsService } from './chats/chats.service';
 import { ChatsComponent } from './chats/chats.component';
 import { HomeComponent } from './home/home.component';
 import { RoomSearchComponent } from './room-search/room-search.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { RoomSearchComponent } from './room-search/room-search.component';
     RoomsComponent,
     ChatsComponent,
     HomeComponent,
-    RoomSearchComponent
+    RoomSearchComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

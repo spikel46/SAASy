@@ -11,12 +11,6 @@
     <!--left side toolbar/info-->
     <div class="col-md-3 toolbar">
       <label>Room Title:</label> {{ room.title }}<br />
-      <label>ID:</label> {{room.roomID}}<br />
-      <label>Description:</label> {{room.description}}<br />
-      <label>Active:</label> {{room.isActive}}<br />
-      <label>Public:</label> {{room.isPublic}}<br />
-      <label>Moderators:</label> {{room.moderators}}<br />
-      <label>Keywords:</label> {{room.keywords}}<br />
       <label>Moderators:</label> {{ room.moderators }}<br />
       <label>Admin:</label> {{ room.admin }} <br />
       <button (click)="goBack()">Back</button>
@@ -49,15 +43,9 @@
 	<label>Description:</label>
 	<input [(ngModel)]="room.description" /><br />
 	<label>Active:</label>
-	<div class="form-group">
-	  <input type="radio" name="active-buttons"[(ngModel)]="room.isActive" value="true">True
-	  <input type="radio" name="active-buttons" [(ngModel)]="room.isActive" value="false">False<br />
-	</div>
+	<input [(ngModel)]="room.isActive" /><br />
 	<label>Public:</label>
-	<div class="form-group">
-	  <input type="radio" name="public-buttons" [(ngModel)]="room.isPublic" value="true">True
-	  <input type="radio" name="public-buttons" [(ngModel)]="room.isPublic" value="false">False<br />
-	</div>
+	<input [(ngModel)]="room.isPublic" /><br />
 	<label>Keywords:</label>
 	<input [(ngModel)]="room.keywords" /><br />
       </div>
