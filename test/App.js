@@ -69,10 +69,12 @@ var App = (function () {
             });
         });
         router.post('/api/register', function (req, res) {
+            console.log("gonna register");
             _this.Users.registerUser(res, req).then(function (list) {
                 //redirect?
                 res.send(list);
             });
+            console.log("registered... in theory");
         });
         //Put Routes
         router.put('/api/chats/:id/upvote', function (req, res) {

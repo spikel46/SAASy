@@ -1,0 +1,22 @@
+<!-- https://www.w3schools.com/howto/howto_css_signup_form.asp -->
+
+<h2>Signup Form</h2>
+
+<div class="container">
+  <label><b>Username</b></label>
+  <input [(ngModel)]="user.username" /><br />
+  <label><b>Email</b></label>
+  <input [(ngModel)]="user.email" /><br />
+  <label><b>Password</b></label>
+  <input [(ngModel)]="user.password" /><br />
+  <!--<input type="text" placeholder="Desired Username" name="username" required>
+            
+      <label><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+      <input type="checkbox" checked="checked"> Remember me
+      -->
+  <div class="clearfix">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <button (click)="register()" class="signupbtn">Sign Up</button>
+  </div>
+</div>

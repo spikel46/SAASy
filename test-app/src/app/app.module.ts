@@ -14,6 +14,9 @@ import { ChatsComponent } from './chats/chats.component';
 import { HomeComponent } from './home/home.component';
 import { RoomSearchComponent } from './room-search/room-search.component';
 import { UsersComponent } from './users/users.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { UsersService } from './users.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,9 @@ import { UsersComponent } from './users/users.component';
     ChatsComponent,
     HomeComponent,
     RoomSearchComponent,
-    UsersComponent
+    UsersComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,7 @@ import { UsersComponent } from './users/users.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [RoomsService, ChatsService],
+  providers: [RoomsService, ChatsService, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

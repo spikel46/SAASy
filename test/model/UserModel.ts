@@ -50,9 +50,21 @@ export default class RoomModel {
     }
 
     public registerUser(response:any, req:any): any {
+      console.log("in registerUser: " + req.body.username + req.body.password);
       var user = req.body.username;
       var pass = req.body.password;
-      bcrypt.genSalt(10, function(err, salt) {
+      var new_user = new this.model(
+	      { username: req.body.username,
+	        email: req.body.email,
+	        password: req.body.password,
+		memberships: req.body.memberships,
+		owner: req.body.owner
+	  });
+      new_user.save(function(err){
+        if (err) throw err;
+      });
+    }
+      /*bcrypt.genSalt(10, function(err, salt) {
         bcrypt.hash(pass, salt, function(err, hash) {
           var new_user = new this.model(
 	      { username: user,
@@ -66,6 +78,6 @@ export default class RoomModel {
           });
         });
       });
-    }
+    }*/
 
 }

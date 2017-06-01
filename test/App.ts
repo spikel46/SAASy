@@ -93,10 +93,12 @@ class App {
     });
 
     router.post('/api/register',(req,res)=>{
+      console.log("gonna register");
       this.Users.registerUser(res, req).then((list) =>{
         //redirect?
         res.send(list);
       });
+      console.log("registered... in theory");
     });
 
     //Put Routes

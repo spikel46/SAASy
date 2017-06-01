@@ -1,0 +1,25 @@
+<!-- https://www.w3schools.com/howto/howto_css_signup_form.asp -->
+
+<h2>Signup Form</h2>
+
+<form action="" style="border:1px solid #ccc">
+  <div class="container">
+    <label><b>Username</b></label>
+    <input type="text" placeholder="Desired Username" name="username" required>
+    
+    <label><b>Email</b></label>
+    <input type="text" placeholder="user@example.com" name="email" required>
+
+    <label><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <label><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+    <input type="checkbox" checked="checked"> Remember me
+
+    <div class="clearfix">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <button type="submit" class="signupbtn">Sign Up</button>
+    </div>
+  </div>
+</form>

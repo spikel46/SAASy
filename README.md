@@ -19,3 +19,7 @@ To Make Changes:
 2) In "test-app/" run "ng build"
 
 3) This creates a "test-app/dist" folder, then move that folder to "test/" by running the command "cp dist ../test/"
+
+To Test A Post Route:
+
+curl -i -d "param1=value1&param2=value2<...etc>" http://localhost:8080/<post-route>
