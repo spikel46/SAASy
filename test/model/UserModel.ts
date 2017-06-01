@@ -1,7 +1,9 @@
-import Mongoose = require('mongoose');
-import bcrypt = require('bcryptjs');
+import * as Mongoose from 'mongoose';
+import * as bcrypt from 'bcryptjs';
 import DataAccess from '../DataAccess';
 import IUserModel from '../interfaces/IUserModel';
+import * as passport from 'passport';
+import Strategy as LocalStrategy from 'passport-local';
 
 var mongoose = DataAccess.mongooseInstance;
 var mongooseConnection = DataAccess.mongooseConnection;

@@ -74,10 +74,6 @@ class App {
 	this.Rooms.search(res, term);
     });
 
-    router.get('/api/login/:user',(req,res)=>{
-        this.Users.tryLogin(res, req);
-    });
-
     //Post Routes
 
     router.post('/api/newroom',(req,res)=>{
@@ -97,6 +93,14 @@ class App {
       this.Users.registerUser(res, req);
       console.log("registered... in theory");
     });
+
+    router.get('/api/login',(req,res)=>{
+      console.log("gonna login");
+      this.Users.tryLogin(res, req);
+      console.log("hypothetically logged in");
+    });
+
+
 
     //Put Routes
     router.put('/api/chats/:id/upvote',(req,res)=>{

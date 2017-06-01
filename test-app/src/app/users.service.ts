@@ -28,6 +28,18 @@ export class UsersService {
         .then(res => res.json())
         .catch(this.handleError);
   }
+  
+  login(uname:string, pwd:string): Promise<any>{
+    console.log(uname + " " + pwd);
+    return this.http.post(this.usersUrl+'/api/login',
+      JSON.stringify({username: uname,
+      		      password: pwd
+		      }), {headers: this.headers})
+          .toPromise()
+          .then(res => res.json())
+          .catch(this.handleError);
+    
+  }
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
