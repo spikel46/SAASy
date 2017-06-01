@@ -70,10 +70,7 @@ var App = (function () {
         });
         router.post('/api/register', function (req, res) {
             console.log("gonna register");
-            _this.Users.registerUser(res, req).then(function (list) {
-                //redirect?
-                res.send(list);
-            });
+            _this.Users.registerUser(res, req);
             console.log("registered... in theory");
         });
         //Put Routes

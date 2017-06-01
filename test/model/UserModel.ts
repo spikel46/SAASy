@@ -61,8 +61,14 @@ export default class RoomModel {
 		owner: req.body.owner
 	  });
       new_user.save(function(err){
-        if (err) throw err;
+        if (err){
+	  response.redirect('/register');
+          return;
+	}
+	response.redirect('/');
       });
+      
+      
     }
       /*bcrypt.genSalt(10, function(err, salt) {
         bcrypt.hash(pass, salt, function(err, hash) {

@@ -49,8 +49,11 @@ var RoomModel = (function () {
             owner: req.body.owner
         });
         new_user.save(function (err) {
-            if (err)
-                throw err;
+            if (err) {
+                response.redirect('/register');
+                return;
+            }
+            response.redirect('/');
         });
     };
     return RoomModel;
