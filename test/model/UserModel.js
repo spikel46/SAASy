@@ -1,6 +1,5 @@
 "use strict";
 exports.__esModule = true;
-var bcrypt = require("bcryptjs");
 var DataAccess_1 = require("../DataAccess");
 var mongoose = DataAccess_1["default"].mongooseInstance;
 var mongooseConnection = DataAccess_1["default"].mongooseConnection;
@@ -27,17 +26,6 @@ var RoomModel = (function () {
             response.json(itemArray);
         });
     };
-    RoomModel.prototype.tryLogin = function (response, req) {
-        var user = req.body.username;
-        var query = this.model.findOne({ username: user });
-        query.exec(function (err, result) {
-            bcrypt.compare(req.body.password, result.password, function (err2, isMatch) {
-                if (err2)
-                    return err(err2);
-                err(null, isMatch);
-            });
-        });
-    };
     RoomModel.prototype.registerUser = function (response, req) {
         console.log("in registerUser: " + req.body.username + req.body.password);
         var user = req.body.username;
@@ -48,6 +36,7 @@ var RoomModel = (function () {
             memberships: req.body.memberships,
             owner: req.body.owner
         });
+        //HOW DO I DO THIS IN SERVER????
         new_user.save(function (err) {
             if (err) {
                 response.redirect('/register');

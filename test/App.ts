@@ -3,6 +3,7 @@ import * as express from 'express';
 import * as logger from 'morgan';
 import * as url from 'url';
 import * as bodyParser from 'body-parser';
+import * as passport from 'passport';
 
 import RoomModel from './model/RoomModel';
 import ChatModel from './model/ChatModel';

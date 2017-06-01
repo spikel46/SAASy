@@ -54,9 +54,6 @@ var App = (function () {
             console.log('Getting search results for: ' + term);
             _this.Rooms.search(res, term);
         });
-        router.get('/api/login/:user', function (req, res) {
-            _this.Users.tryLogin(res, req);
-        });
         //Post Routes
         router.post('/api/newroom', function (req, res) {
             _this.Rooms.newRoom(res, req).then(function (list) {
@@ -72,6 +69,11 @@ var App = (function () {
             console.log("gonna register");
             _this.Users.registerUser(res, req);
             console.log("registered... in theory");
+        });
+        router.get('/api/login', function (req, res) {
+            console.log("gonna login");
+            _this.Users.tryLogin(res, req);
+            console.log("hypothetically logged in");
         });
         //Put Routes
         router.put('/api/chats/:id/upvote', function (req, res) {

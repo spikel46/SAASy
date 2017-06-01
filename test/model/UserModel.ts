@@ -2,8 +2,6 @@ import * as Mongoose from 'mongoose';
 import * as bcrypt from 'bcryptjs';
 import DataAccess from '../DataAccess';
 import IUserModel from '../interfaces/IUserModel';
-import * as passport from 'passport';
-import Strategy as LocalStrategy from 'passport-local';
 
 var mongoose = DataAccess.mongooseInstance;
 var mongooseConnection = DataAccess.mongooseConnection;
@@ -40,17 +38,6 @@ export default class RoomModel {
         });
     }
 
-    public tryLogin(response:any, req:any): any {
-        var user = req.body.username;
-    	var query = this.model.findOne({username: user});
-        query.exec( (err, result) => {
-            bcrypt.compare(req.body.password, result.password, (err2, isMatch) => {
-                if (err2) return err(err2);
-                err(null, isMatch); 
-            });
-	});
-    }
-
     public registerUser(response:any, req:any): any {
       console.log("in registerUser: " + req.body.username + req.body.password);
       var user = req.body.username;
@@ -62,6 +49,7 @@ export default class RoomModel {
 		memberships: req.body.memberships,
 		owner: req.body.owner
 	  });
+      //HOW DO I DO THIS IN SERVER????
       new_user.save(function(err){
         if (err){
 	  response.redirect('/register');
