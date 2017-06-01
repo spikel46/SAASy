@@ -13,7 +13,6 @@ import { ChatsService } from './chats/chats.service';
 import { ChatsComponent } from './chats/chats.component';
 import { HomeComponent } from './home/home.component';
 import { RoomSearchComponent } from './room-search/room-search.component';
-import { UsersComponent } from './users/users.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UsersService } from './users.service';
@@ -26,7 +25,6 @@ import { UsersService } from './users.service';
     ChatsComponent,
     HomeComponent,
     RoomSearchComponent,
-    UsersComponent,
     LoginComponent,
     RegisterComponent
   ],
