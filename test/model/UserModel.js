@@ -3,12 +3,12 @@ exports.__esModule = true;
 var DataAccess_1 = require("../DataAccess");
 var mongoose = DataAccess_1["default"].mongooseInstance;
 var mongooseConnection = DataAccess_1["default"].mongooseConnection;
-var RoomModel = (function () {
-    function RoomModel() {
+var UserModel = (function () {
+    function UserModel() {
         this.createSchema();
         this.createModel();
     }
-    RoomModel.prototype.createSchema = function () {
+    UserModel.prototype.createSchema = function () {
         this.schema = mongoose.Schema({
             username: { type: String, required: true, index: { unique: true } },
             email: { type: String, required: true },
@@ -17,16 +17,16 @@ var RoomModel = (function () {
             owner: []
         }, { collection: 'Users' });
     };
-    RoomModel.prototype.createModel = function () {
+    UserModel.prototype.createModel = function () {
         this.model = mongooseConnection.model("User", this.schema);
     };
-    RoomModel.prototype.retrieveUserRooms = function (response, user) {
+    UserModel.prototype.retrieveUserRooms = function (response, user) {
         var query = this.model.find({ username: user });
         query.exec(function (err, itemArray) {
             response.json(itemArray);
         });
     };
-    RoomModel.prototype.registerUser = function (response, req) {
+    UserModel.prototype.registerUser = function (response, req) {
         console.log("in registerUser: " + req.body.username + req.body.password);
         var user = req.body.username;
         var pass = req.body.password;
@@ -45,6 +45,30 @@ var RoomModel = (function () {
             response.redirect('/');
         });
     };
-    return RoomModel;
+    /*bcrypt.genSalt(10, function(err, salt) {
+      bcrypt.hash(pass, salt, function(err, hash) {
+        var new_user = new this.model(
+        { username: user,
+          email: req.body.email,
+          password: hash,
+      memberships: [],
+      owner: []
+    });
+    new_user.save(function(err){
+      if (err) throw err;
+        });
+      });
+    });
+  }*/
+    UserModel.prototype.findOne = function (userQuery, cb) {
+        var query = this.model.findOne(userQuery);
+        query.exec(function (err, ret) {
+            if (err) {
+                return cb(err, null);
+            }
+            return cb(null, ret);
+        });
+    };
+    return UserModel;
 }());
-exports["default"] = RoomModel;
+exports["default"] = UserModel;

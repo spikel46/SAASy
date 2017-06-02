@@ -3,6 +3,9 @@ exports.__esModule = true;
 var express = require("express");
 var logger = require("morgan");
 var bodyParser = require("body-parser");
+var session = require("express-session");
+var passport = require("passport");
+var LocalStrategy = require('passport-local').Strategy;
 var RoomModel_1 = require("./model/RoomModel");
 var ChatModel_1 = require("./model/ChatModel");
 var UserModel_1 = require("./model/UserModel");
@@ -10,24 +13,54 @@ var UserModel_1 = require("./model/UserModel");
 var App = (function () {
     //Run configuration methods on the Express instance.
     function App() {
-        this.express = express();
-        this.middleware();
-        this.routes();
-        this.idGenerator = 100;
         this.Rooms = new RoomModel_1["default"]();
         this.Chats = new ChatModel_1["default"]();
         this.Users = new UserModel_1["default"]();
+        this.express = express();
+        this.middleware();
+        this.routes();
     }
     // Configure Express middleware.
     App.prototype.middleware = function () {
         this.express.use(logger('dev'));
         this.express.use(bodyParser.json());
         this.express.use(bodyParser.urlencoded({ extended: false }));
+        this.express.use(session({ secret: 'ezsecret' }));
+        this.express.use(passport.initialize());
+        this.express.use(passport.session());
     };
     // Configure API endpoints.
     App.prototype.routes = function () {
         var _this = this;
         var router = express.Router();
+        var User = this.Users;
+        passport.use(new LocalStrategy(function (username, password, done) {
+            console.log(username, password);
+            User.findOne({ username: username }, function (err, user) {
+                console.log(user);
+                if (err) {
+                    return done(err);
+                }
+                if (!user) {
+                    return done(null, false);
+                }
+                if (password !== user.password) {
+                    return done(null, false);
+                }
+                return done(null, user);
+            });
+        }));
+        passport.serializeUser(function (user, cb) {
+            cb(null, user.id);
+        });
+        passport.deserializeUser(function (id, cb) {
+            this.Users.findById(id, function (err, user) {
+                if (err) {
+                    return cb(err);
+                }
+                cb(null, user);
+            });
+        });
         router.use(function (req, res, next) {
             res.header("Access-Control-Allow-Origin", "*");
             res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -70,11 +103,10 @@ var App = (function () {
             _this.Users.registerUser(res, req);
             console.log("registered... in theory");
         });
-        router.get('/api/login', function (req, res) {
-            console.log("gonna login");
-            _this.Users.tryLogin(res, req);
-            console.log("hypothetically logged in");
-        });
+        router.post('/api/login', passport.authenticate('local', {
+            successRedirect: '/home',
+            failureRedirect: '/login'
+        }));
         //Put Routes
         router.put('/api/chats/:id/upvote', function (req, res) {
             _this.Chats.upvote(res, req).then(function (list) {

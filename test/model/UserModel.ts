@@ -6,7 +6,7 @@ import IUserModel from '../interfaces/IUserModel';
 var mongoose = DataAccess.mongooseInstance;
 var mongooseConnection = DataAccess.mongooseConnection;
 
-export default class RoomModel {
+export default class UserModel {
     public schema:Mongoose.Schema;
     public model:any;
 
@@ -19,9 +19,9 @@ export default class RoomModel {
         this.schema =  mongoose.Schema(
             {
                 username: { type: String, required: true, index: {unique: true} },
-    		email: { type: String, required: true},
-    		password: { type: String, required: true },
-    		memberships: [],
+    		    email: { type: String, required: true},
+    		    password: { type: String, required: true },
+    		    memberships: [],
     		owner: [],
             }, {collection: 'Users'}
         );
@@ -76,4 +76,12 @@ export default class RoomModel {
       });
     }*/
 
+    public findOne(userQuery, cb): any {
+        var query = this.model.findOne(userQuery);
+        query.exec( (err, ret) => {
+            if (err) { return cb(err,null); }
+            return cb(null,ret);
+        });
+        
+    }
 }

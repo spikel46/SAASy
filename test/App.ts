@@ -3,7 +3,9 @@ import * as express from 'express';
 import * as logger from 'morgan';
 import * as url from 'url';
 import * as bodyParser from 'body-parser';
+import * as session from 'express-session';
 import * as passport from 'passport';
+var LocalStrategy = require('passport-local').Strategy;
 
 import RoomModel from './model/RoomModel';
 import ChatModel from './model/ChatModel';
@@ -18,17 +20,15 @@ class App {
   public Rooms:RoomModel;
   public Chats:ChatModel;
   public Users:UserModel;
-  public idGenerator:number;
 
   //Run configuration methods on the Express instance.
   constructor() {
-    this.express = express();
-    this.middleware();
-    this.routes();
-    this.idGenerator = 100;
     this.Rooms = new RoomModel();
     this.Chats = new ChatModel();
     this.Users = new UserModel();
+    this.express = express();
+    this.middleware();
+    this.routes();
   }
 
   // Configure Express middleware.
@@ -36,19 +36,45 @@ class App {
     this.express.use(logger('dev'));
     this.express.use(bodyParser.json());
     this.express.use(bodyParser.urlencoded({ extended: false }));
+    this.express.use(session({ secret: 'ezsecret' }));
+    this.express.use(passport.initialize());
+    this.express.use(passport.session());    
   }
 
   // Configure API endpoints.
   private routes(): void {
     let router = express.Router();
+    let User = this.Users;
+    passport.use( new LocalStrategy(
+      function(username, password, done) {
+        console.log(username, password);
+        User.findOne({username: username}, function (err, user) {
+          console.log(user);
+          if (err) { return done(err); }
+          if (!user) { return done(null, false); }
+          if (password !== user.password) { return done(null, false); }
+          return done(null, user);
+        });
+    }));
     
-  router.use( (req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Methods", "PUT");
-  next();
-  });
+    passport.serializeUser(function(user, cb) {
+     cb(null, user.id);
+    });
 
+    passport.deserializeUser(function(id, cb) {
+      this.Users.findById(id, function (err, user) {
+        if (err) { return cb(err); }
+        cb(null, user);
+      });
+    });
+    
+    router.use( (req, res, next) => {
+      res.header("Access-Control-Allow-Origin", "*");
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+      res.header("Access-Control-Allow-Methods", "PUT");
+      next();
+    });
+    
 
     //Get Routes
 
@@ -95,13 +121,12 @@ class App {
       console.log("registered... in theory");
     });
 
-    router.get('/api/login',(req,res)=>{
-      console.log("gonna login");
-      this.Users.tryLogin(res, req);
-      console.log("hypothetically logged in");
-    });
 
-
+    router.post('/api/login', passport.authenticate('local',
+    {
+      successRedirect: '/home',
+      failureRedirect: '/login'
+    }));
 
     //Put Routes
     router.put('/api/chats/:id/upvote',(req,res)=>{

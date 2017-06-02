@@ -29,12 +29,10 @@ export class UsersService {
         .catch(this.handleError);
   }
   
-  login(uname:string, pwd:string): Promise<any>{
-    console.log(uname + " " + pwd);
+  login(user:User): Promise<any>{
+    console.log(user.username + " " + user.password);
     return this.http.post(this.usersUrl+'/api/login',
-      JSON.stringify({username: uname,
-      		      password: pwd
-		      }), {headers: this.headers})
+      JSON.stringify(user), {headers: this.headers})
           .toPromise()
           .then(res => res.json())
           .catch(this.handleError);
