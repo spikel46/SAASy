@@ -2,6 +2,8 @@
 
 <h2>Signup Form</h2>
 
+<div *ngIf="message"> {{ message }} </div>
+
 <div class="container">
   <label><b>Username</b></label>
   <input [(ngModel)]="user.username" /><br />
@@ -9,10 +11,11 @@
   <input [(ngModel)]="user.email" /><br />
   <label><b>Password</b></label>
   <input [(ngModel)]="user.password" /><br />
+  <label><b>Repeat Password</b></label>
+  <input [(ngModel)]="confirmPass">
   <!--<input type="text" placeholder="Desired Username" name="username" required>
             
-      <label><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+      
       <input type="checkbox" checked="checked"> Remember me
       -->
   <div class="clearfix">

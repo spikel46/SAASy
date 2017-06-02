@@ -8,20 +8,33 @@ import { UsersService } from '../users.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent{
 
   user:User;
-
+  confirmPass:string;
+  message:string;
+  
   constructor(private userService:UsersService) {
     this.user = new User;
   }
 
-  ngOnInit() {
+  confirm(pwd1, pwd2){
+    if(pwd1 != pwd2){
+      this.message = "Passwords do not match";
+      console.log("pass no match");
+      return false;
+    }
+    if(pwd1 == pwd2){
+      this.message = "Passwords match! Please log in!"
+      return true;
+    }
   }
 
   register() {
     console.log(JSON.stringify(this.user));
-    this.userService.register(this.user);
+    if(this.confirm(this.user.password, this.confirmPass)){;
+      this.userService.register(this.user);
+    }
   }
 
 }
