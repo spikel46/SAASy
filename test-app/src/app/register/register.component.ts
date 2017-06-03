@@ -21,7 +21,6 @@ export class RegisterComponent{
   confirm(pwd1, pwd2){
     if(pwd1 != pwd2){
       this.message = "Passwords do not match";
-      console.log("pass no match");
       return false;
     }
     if(pwd1 == pwd2){
@@ -31,9 +30,12 @@ export class RegisterComponent{
   }
 
   register() {
-    console.log(JSON.stringify(this.user));
     if(this.confirm(this.user.password, this.confirmPass)){;
-      this.userService.register(this.user);
+      this.userService.register(this.user)
+          .then(result =>
+	        {
+		  console.log("RESULT" + JSON.stringify(result));
+	        })
     }
   }
 

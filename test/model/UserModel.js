@@ -39,11 +39,14 @@ var UserModel = (function () {
         //HOW DO I DO THIS IN SERVER????
         new_user.save(function (err) {
             if (err) {
-                response.redirect('/register');
-                return;
+                //set up error object to return
+                console.log("error trying to register user");
             }
-            response.redirect('/');
         });
+        var response = this.model.find({ username: req.body.username });
+        console.log("accepted response");
+        console.log(response);
+        return response;
     };
     /*bcrypt.genSalt(10, function(err, salt) {
       bcrypt.hash(pass, salt, function(err, hash) {

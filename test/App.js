@@ -64,7 +64,7 @@ var App = (function () {
         router.use(function (req, res, next) {
             res.header("Access-Control-Allow-Origin", "*");
             res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-            res.header("Access-Control-Allow-Methods", "*");
+            res.header("Access-Control-Allow-Methods", "PUT");
             next();
         });
         //Get Routes
@@ -99,9 +99,11 @@ var App = (function () {
             });
         });
         router.post('/api/register', function (req, res) {
-            console.log("gonna register");
-            _this.Users.registerUser(res, req);
-            console.log("registered... in theory");
+            console.log("Register begin");
+            _this.Users.registerUser(res, req).then(function (user) {
+                res.send(user);
+            });
+            console.log("Register complete");
         });
         router.post('/api/login', passport.authenticate('local', {
             successRedirect: '/home',

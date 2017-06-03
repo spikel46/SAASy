@@ -71,7 +71,7 @@ class App {
     router.use( (req, res, next) => {
       res.header("Access-Control-Allow-Origin", "*");
       res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-      res.header("Access-Control-Allow-Methods", "*");
+      res.header("Access-Control-Allow-Methods", "PUT");
       next();
     });
     
@@ -116,11 +116,12 @@ class App {
     });
 
     router.post('/api/register',(req,res)=>{
-      console.log("gonna register");
-      this.Users.registerUser(res, req);
-      console.log("registered... in theory");
+      console.log("Register begin");
+      this.Users.registerUser(res, req).then((user) =>{
+        res.send(user);
+      });
+      console.log("Register complete");
     });
-
 
     router.post('/api/login', passport.authenticate('local',
     {
