@@ -18,11 +18,12 @@ export default class RoomModel {
         this.schema =  mongoose.Schema(
             {
                 roomID: Number,
-    		isActive : Boolean,
-    		isPublic : Boolean,
-    		description : String,
-    		users : [],
-    		moderators : [],
+                title: String,
+    		isActive: Boolean,
+    		isPublic: Boolean,
+    		description: String,
+    		users: [],
+    		moderators: [],
     		admin: String,
     		keywords: [],
             }, {collection: 'Rooms'}
@@ -60,6 +61,7 @@ export default class RoomModel {
 	return response;
     }
 
+//redo this
     public newRoom(response:any, req) {
         var id = req.body.roomId;
         var des = req.body.description;

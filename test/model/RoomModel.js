@@ -11,6 +11,7 @@ var RoomModel = (function () {
     RoomModel.prototype.createSchema = function () {
         this.schema = mongoose.Schema({
             roomID: Number,
+            title: String,
             isActive: Boolean,
             isPublic: Boolean,
             description: String,
@@ -49,6 +50,7 @@ var RoomModel = (function () {
         });
         return response;
     };
+    //redo this
     RoomModel.prototype.newRoom = function (response, req) {
         var id = req.body.roomId;
         var des = req.body.description;

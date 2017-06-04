@@ -2,6 +2,7 @@ import Mongoose = require("mongoose");
 
 interface IRoomModel extends Mongoose.Document {
     roomID: number;
+    title: string;
     isActive : boolean;
     isPublic : boolean;
     description : string;
