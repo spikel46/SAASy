@@ -56,7 +56,20 @@ class App {
   // Configure API endpoints.
   private routes(): void {
     let router = express.Router();
+
+
+    router.use( (req, res, next) => {
+      res.header("Access-Control-Allow-Origin", "*");
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+      res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+      next();
+    });
     
+
+
+
+
+
     let User = this.Users;
 
     passport.use( new LocalStrategy(
@@ -94,17 +107,9 @@ class App {
         )
     );
 
-    router.use( (req, res, next) => {
-      res.header("Access-Control-Allow-Origin", "*");
-      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-      res.header("Access-Control-Allow-Methods", "PUT");
-      next();
-    });
-    
-
     //Get Routes
 
-    router.get('/api/rooms', this.validateAuth, (req, res) => {
+    router.get('/api/rooms', (req, res) => {
         console.log('Getting all rooms');
         this.Rooms.retrieveRooms(res);
     });

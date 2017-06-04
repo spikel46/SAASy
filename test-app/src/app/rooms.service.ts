@@ -13,24 +13,24 @@ export class RoomsService {
 
   constructor(private http: Http) { }
   
-  private roomsUrl = '';
+  private hostUrl = 'http://localhost:8080';
 
   getRooms(): Promise<Room[]> {
-    return this.http.get(this.roomsUrl+'/api/rooms')
+    return this.http.get(this.hostUrl+'/api/rooms')
                .toPromise()
-               .then(response => response.json() as Room[])
+               .then(res => res.json() as Room[])
                .catch(this.handleError);
   }
   
   getRoom(roomID: number): Promise<Room> {
-    return this.http.get(this.roomsUrl+'/api/rooms/'+roomID)
+    return this.http.get(this.hostUrl+'/api/rooms/'+roomID)
                .toPromise()
-               .then(response => response.json() as Room)
+               .then(res => res.json() as Room)
                .catch(this.handleError);
   }
   
   update(room: Room): Promise<Room> {
-    return this.http.put(this.roomsUrl + '/api/rooms/' + room.roomID,
+    return this.http.put(this.hostUrl + '/api/rooms/' + room.roomID,
                          JSON.stringify(room),
 			 {headers: this.headers})
                .toPromise()
@@ -39,9 +39,9 @@ export class RoomsService {
   }
 
   searchRooms(query: string): Promise<Room[]>{
-    return this.http.get(this.roomsUrl+'/api/search/'+query)
+    return this.http.get(this.hostUrl+'/api/search/'+query)
                .toPromise()
-	       .then(response => response.json() as Room[])
+	       .then(res => res.json() as Room[])
 	       .catch(this.handleError);
   }
   

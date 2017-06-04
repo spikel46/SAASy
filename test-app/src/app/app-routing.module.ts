@@ -2,7 +2,7 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { RoomsComponent }      from './rooms.component';
-import { RoomDetailComponent }  from './room-detail.component';
+import { RoomDetailComponent }  from './room-detail/room-detail.component';
 import { RoomSearchComponent } from './room-search/room-search.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';

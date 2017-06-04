@@ -43,6 +43,12 @@ var App = (function () {
     App.prototype.routes = function () {
         var _this = this;
         var router = express.Router();
+        router.use(function (req, res, next) {
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+            next();
+        });
         var User = this.Users;
         passport.use(new LocalStrategy(function (username, password, done) {
             console.log(username, password);
@@ -73,14 +79,8 @@ var App = (function () {
         });
         router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['public_profile', 'email'] }));
         router.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login', successRedirect: '/rooms' }));
-        router.use(function (req, res, next) {
-            res.header("Access-Control-Allow-Origin", "*");
-            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-            res.header("Access-Control-Allow-Methods", "PUT");
-            next();
-        });
         //Get Routes
-        router.get('/api/rooms', this.validateAuth, function (req, res) {
+        router.get('/api/rooms', function (req, res) {
             console.log('Getting all rooms');
             _this.Rooms.retrieveRooms(res);
         });

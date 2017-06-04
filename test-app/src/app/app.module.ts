@@ -5,11 +5,11 @@ import { HttpModule } from '@angular/http';
 
 
 import { AppComponent } from './app.component';
-import { RoomDetailComponent } from './room-detail.component';
+import { RoomDetailComponent } from './room-detail/room-detail.component';
 import { RoomsComponent } from './rooms.component';
 import { RoomsService } from './rooms.service';
 import { AppRoutingModule } from './app-routing.module';
-import { ChatsService } from './chats/chats.service';
+import { ChatsService } from './chats.service';
 import { ChatsComponent } from './chats/chats.component';
 import { HomeComponent } from './home/home.component';
 import { RoomSearchComponent } from './room-search/room-search.component';

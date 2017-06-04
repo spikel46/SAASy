@@ -4,7 +4,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Chat } from './chat';
-import { ChatsService } from './chats.service';
+import { ChatsService } from '../chats.service';
   
 @Component({
   selector: 'app-chats',
