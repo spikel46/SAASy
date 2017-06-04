@@ -3,7 +3,7 @@ import Mongoose = require("mongoose");
 class DataAccess {
     static mongooseInstance: any;
     static mongooseConnection: Mongoose.Connection;
-    static DB_CONNECTION_STRING:string = 'mongodb://localhost:27017/QuorumDB';
+    static DB_CONNECTION_STRING:string = 'mongodb://dbAdmin:quorumdb@ds064299.mlab.com:64299/quorumdb';
     
     constructor () {
         DataAccess.connect();

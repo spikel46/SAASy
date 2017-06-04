@@ -9,6 +9,8 @@ var LocalStrategy = require('passport-local').Strategy;
 var RoomModel_1 = require("./model/RoomModel");
 var ChatModel_1 = require("./model/ChatModel");
 var UserModel_1 = require("./model/UserModel");
+var googlePassport_1 = require("./SSO_OAuth/googlePassport");
+var facebookPassport_1 = require("./SSO_OAuth/facebookPassport");
 // Creates and configures an ExpressJS web server.
 var App = (function () {
     //Run configuration methods on the Express instance.
@@ -16,6 +18,8 @@ var App = (function () {
         this.Rooms = new RoomModel_1["default"]();
         this.Chats = new ChatModel_1["default"]();
         this.Users = new UserModel_1["default"]();
+        this.googlePassportObj = new googlePassport_1["default"]();
+        this.facebookPassportObj = new facebookPassport_1["default"]();
         this.express = express();
         this.middleware();
         this.routes();
@@ -28,6 +32,12 @@ var App = (function () {
         this.express.use(session({ secret: 'ezsecret' }));
         this.express.use(passport.initialize());
         this.express.use(passport.session());
+    };
+    App.prototype.validateAuth = function (req, res, next) {
+        if (req.isAuthenticated()) {
+            return next();
+        }
+        res.redirect('/');
     };
     // Configure API endpoints.
     App.prototype.routes = function () {
@@ -61,6 +71,8 @@ var App = (function () {
                 cb(null, user);
             });
         });
+        router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['public_profile', 'email'] }));
+        router.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login', successRedirect: '/rooms' }));
         router.use(function (req, res, next) {
             res.header("Access-Control-Allow-Origin", "*");
             res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -68,7 +80,7 @@ var App = (function () {
             next();
         });
         //Get Routes
-        router.get('/api/rooms', function (req, res) {
+        router.get('/api/rooms', this.validateAuth, function (req, res) {
             console.log('Getting all rooms');
             _this.Rooms.retrieveRooms(res);
         });

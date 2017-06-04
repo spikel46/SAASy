@@ -466,7 +466,7 @@ module.exports = "<div class=\"container-fluid bg-1 text-center\">\n  <div class
 /***/ 211:
 /***/ (function(module, exports) {
 
-module.exports = "<!-- https://www.w3schools.com/howto/howto_css_login_form.asp -->\n\n<h2>Login Form</h2>\n\n<div class=\"full-login\">\n\n  <div class=\"container\">\n    <label><b>Username</b></label>\n    <input [(ngModel)]=\"user.username\" /><br />\n    <label><b>Password</b></label>\n    <input [(ngModel)]=\"user.password\" /><br />\n        \n    <button (click)=\"login()\">Login</button>\n    <input type=\"checkbox\" checked=\"checked\"> Remember me\n  </div>\n\n  <div class=\"container\" style=\"background-color:#f1f1f1\">\n    <button type=\"button\" class=\"cancelbtn\">Cancel</button>\n    <span class=\"psw\">Forgot <a href=\"#\">password?</a></span>\n  </div>\n</div>\n"
+module.exports = "<!-- https://www.w3schools.com/howto/howto_css_login_form.asp -->\n\n<h2>Login Form</h2>\n\n<div class=\"full-login\">\n\n  <div class=\"container\">\n    <label><b>Username</b></label>\n    <input [(ngModel)]=\"user.username\" /><br />\n    <label><b>Password</b></label>\n    <input [(ngModel)]=\"user.password\" /><br />\n        \n    <button (click)=\"login()\">Login</button>\n    <input type=\"checkbox\" checked=\"checked\"> Remember me\n  </div>\n\n  <div class=\"container\" style=\"background-color:#f1f1f1\">\n    <button type=\"button\" class=\"cancelbtn\">Cancel</button>\n    <a href=\"/auth/facebook\">Login with Facebook</a>\n    <span class=\"psw\">Forgot <a href=\"#\">password?</a></span>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -742,6 +742,13 @@ var UsersService = (function () {
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
+    UsersService.prototype.facebookLogin = function () {
+        console.log("trying fb login");
+        return this.http.get(this.usersUrl + '/auth/facebook')
+            .toPromise()
+            .then(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
     UsersService.prototype.handleError = function (error) {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
@@ -832,6 +839,9 @@ var LoginComponent = (function () {
     };
     LoginComponent.prototype.login = function () {
         this.userService.login(this.user);
+    };
+    LoginComponent.prototype.facebookLogin = function () {
+        this.userService.facebookLogin();
     };
     return LoginComponent;
 }());

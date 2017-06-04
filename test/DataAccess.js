@@ -17,6 +17,6 @@ var DataAccess = (function () {
     };
     return DataAccess;
 }());
-DataAccess.DB_CONNECTION_STRING = 'mongodb://localhost:27017/QuorumDB';
+DataAccess.DB_CONNECTION_STRING = 'mongodb://dbAdmin:quorumdb@ds064299.mlab.com:64299/quorumdb';
 DataAccess.connect();
 exports["default"] = DataAccess;

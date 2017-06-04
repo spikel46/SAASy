@@ -10,6 +10,8 @@ var LocalStrategy = require('passport-local').Strategy;
 import RoomModel from './model/RoomModel';
 import ChatModel from './model/ChatModel';
 import UserModel from './model/UserModel';
+import GooglePassportObj from './SSO_OAuth/googlePassport';
+import FacebookPassportObj from './SSO_OAuth/facebookPassport';
 import DataAccess from './DataAccess';
 
 // Creates and configures an ExpressJS web server.
@@ -20,12 +22,17 @@ class App {
   public Rooms:RoomModel;
   public Chats:ChatModel;
   public Users:UserModel;
+  public googlePassportObj:GooglePassportObj;
+  public facebookPassportObj:FacebookPassportObj;
+  
 
   //Run configuration methods on the Express instance.
   constructor() {
     this.Rooms = new RoomModel();
     this.Chats = new ChatModel();
     this.Users = new UserModel();
+    this.googlePassportObj = new GooglePassportObj();
+    this.facebookPassportObj = new FacebookPassportObj();
     this.express = express();
     this.middleware();
     this.routes();
@@ -41,10 +48,17 @@ class App {
     this.express.use(passport.session());    
   }
 
+  private validateAuth(req, res, next){
+      if (req.isAuthenticated()) { return next(); }
+        res.redirect('/');
+    }
+
   // Configure API endpoints.
   private routes(): void {
     let router = express.Router();
+    
     let User = this.Users;
+
     passport.use( new LocalStrategy(
       function(username, password, done) {
         console.log(username, password);
@@ -67,7 +81,19 @@ class App {
         cb(null, user);
       });
     });
-    
+
+    router.get('/auth/facebook', 
+        passport.authenticate('facebook', 
+            {scope: ['public_profile', 'email'] }
+        )
+    );
+
+    router.get('/auth/facebook/callback', 
+        passport.authenticate('facebook', 
+            { failureRedirect: '/login', successRedirect: '/rooms' }
+        )
+    );
+
     router.use( (req, res, next) => {
       res.header("Access-Control-Allow-Origin", "*");
       res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -78,7 +104,7 @@ class App {
 
     //Get Routes
 
-    router.get('/api/rooms', (req, res) => {
+    router.get('/api/rooms', this.validateAuth, (req, res) => {
         console.log('Getting all rooms');
         this.Rooms.retrieveRooms(res);
     });

@@ -10,6 +10,7 @@ var UserModel = (function () {
     }
     UserModel.prototype.createSchema = function () {
         this.schema = mongoose.Schema({
+            ssoID: { type: String, index: { unique: true } },
             username: { type: String, required: true, index: { unique: true } },
             email: { type: String, required: true },
             password: { type: String, required: true },

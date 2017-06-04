@@ -4,16 +4,25 @@
   "description": "This directory contains two express servers: * AppServer.js - Combined Node/Express web server w/ Mongo Access * Server.js - Encapsulated Node/Express web server w/ Mongo Access",
   "main": "Server.js",
   "dependencies": {
+    "@types/node": "^7.0.23",
     "assert": "^1.4.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.1",
     "debug": "^2.6.3",
     "express": "^4.15.2",
+    "express-session": "^1.15.3",
     "mongodb": "^2.2.25",
+    "mongoose": "^4.10.4",
     "morgan": "^1.8.1",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth": "^1.0.0",
+    "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "q": "^1.5.0",
     "socket.io": "^2.0.1",
-    "typescript": "^2.2.2"
+    "typescript": "^2.2.2",
+    "url": "^0.11.0"
   },
   "devDependencies": {
     "@types/node": "^7.0.23",

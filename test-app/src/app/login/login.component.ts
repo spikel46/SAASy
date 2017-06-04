@@ -26,4 +26,8 @@ export class LoginComponent implements OnInit {
     this.userService.login(this.user);
   }
 
+  facebookLogin(){
+    this.userService.facebookLogin();
+  }
+
 }

@@ -7,14 +7,14 @@ let GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 class GooglePassport {
 
     userId: string;
-    displayName: string;
+    username: string;
     email: string;
     clientId: string;
     secretId: string;
     
     constructor() {
-        this.clientId = googleAppAuth.id;
-        this.secretId = googleAppAuth.secret;
+        this.clientId = googleOAuth2.id;
+        this.secretId = googleOAuth2.secret;
 
         passport.use(new GoogleStrategy({
                 clientID: this.clientId,
@@ -26,7 +26,7 @@ class GooglePassport {
                 process.nextTick( () => {
                     console.log('validating facebook profile:' + JSON.stringify(profile));
                     this.userId = profile.id;
-                    this.displayName = profile.displayName;
+                    this.username = profile.username;
                     this.email = profile.emails[0].value;
                     return done(null, profile);
                 });
