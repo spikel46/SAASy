@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { User } from '../user';
 import { UsersService } from '../users.service';
@@ -14,7 +15,8 @@ export class RegisterComponent{
   confirmPass:string;
   message:string;
   
-  constructor(private userService:UsersService) {
+  constructor(private userService:UsersService,
+  private router:Router) {
     this.user = new User;
   }
 
@@ -30,11 +32,14 @@ export class RegisterComponent{
   }
 
   register() {
-    if(this.confirm(this.user.password, this.confirmPass)){;
+    var new_page;
+    if(this.confirm(this.user.password, this.confirmPass)){
       this.userService.register(this.user)
           .then(result =>
 	        {
-		  console.log("RESULT" + JSON.stringify(result));
+		  console.log("RESULT" + result["_body"]);
+		  new_page = result["_body"];
+		  this.router.navigate([new_page]);
 	        })
     }
   }

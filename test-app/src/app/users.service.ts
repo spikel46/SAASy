@@ -25,7 +25,7 @@ export class UsersService {
 		      owner: []
 		      }), {headers: this.headers})
         .toPromise()
-        .then(res => res.json())
+        .then(res => res)
         .catch(this.handleError);
   }
   

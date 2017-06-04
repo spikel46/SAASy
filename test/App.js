@@ -100,9 +100,9 @@ var App = (function () {
         });
         router.post('/api/register', function (req, res) {
             console.log("Register begin");
-            _this.Users.registerUser(res, req).then(function (user) {
-                res.send(user);
-            });
+            _this.Users.registerUser(res, req); /*.then((user) =>{
+              res.send(user);
+            });*/
             console.log("Register complete");
         });
         router.post('/api/login', passport.authenticate('local', {

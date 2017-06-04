@@ -26,7 +26,7 @@ var UserModel = (function () {
             response.json(itemArray);
         });
     };
-    UserModel.prototype.registerUser = function (response, req) {
+    UserModel.prototype.registerUser = function (res, req) {
         console.log("in registerUser: " + req.body.username + req.body.password);
         var user = req.body.username;
         var pass = req.body.password;
@@ -41,12 +41,13 @@ var UserModel = (function () {
             if (err) {
                 //set up error object to return
                 console.log("error trying to register user");
+                res.send("/register");
+            }
+            else {
+                console.log("did register user");
+                res.send("/home");
             }
         });
-        var response = this.model.find({ username: req.body.username });
-        console.log("accepted response");
-        console.log(response);
-        return response;
     };
     /*bcrypt.genSalt(10, function(err, salt) {
       bcrypt.hash(pass, salt, function(err, hash) {

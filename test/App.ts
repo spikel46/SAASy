@@ -117,9 +117,9 @@ class App {
 
     router.post('/api/register',(req,res)=>{
       console.log("Register begin");
-      this.Users.registerUser(res, req).then((user) =>{
+      this.Users.registerUser(res, req);/*.then((user) =>{
         res.send(user);
-      });
+      });*/
       console.log("Register complete");
     });
 
