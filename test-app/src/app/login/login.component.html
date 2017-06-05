@@ -1,21 +1,23 @@
 <!-- https://www.w3schools.com/howto/howto_css_login_form.asp -->
 
-<h2>Login Form</h2>
+<div class="container-fluid login-page">
 
-<div class="full-login">
-
-  <div class="container">
+<div class="login-form col-md-6">
+  <h2>Login Form</h2>
     <label><b>Username</b></label>
     <input [(ngModel)]="user.username" /><br />
     <label><b>Password</b></label>
     <input [(ngModel)]="user.password" /><br />
-  </div>
 
-  <div class="container" style="background-color:#f1f1f1">
+  <div class="clearfix">
     <!--<input type="checkbox" checked="checked"> Remember me-->
     <button type="button" class="cancelbtn">Cancel</button>
     <button (click)="login()">Login</button>
     <a class = "btn" href="/auth/facebook">Login with Facebook</a>
-    <span class="psw">Forgot <a href="#">password?</a></span>
+    <!--<span class="psw">Forgot <a href="#">password?</a></span>-->
   </div>
 </div>
+
+</div>
+
+

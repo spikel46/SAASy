@@ -14,7 +14,7 @@ import { Chat }  from './chats/chat';
 export class ChatsService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private hostUrl = 'http://localhost:8080';
+  private hostUrl = '';
 
   private temp_user = "Not-Joey";
   private curr_time = new Date();

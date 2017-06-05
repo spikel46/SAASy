@@ -1,10 +1,29 @@
+.container-fluid{
+    display: flex;
+    flex-direction:column;
+    text-align:center;
+    height: calc(100% - 52px);
+    margin: 0 0 0 0;
+}
+
+/*overlay in home component if wanted later*/
+
+.result-page{
+    position: relative;
+    background-image: url('../../assets/img/BlackHole_1_WikimediaCommons.jpg');
+    background-size: cover;
+    background-position:center;
+}
+
 .result-page-container{
     position: absolute; /*within its parent element*/
-    background-color:yellow;
+    background: rgba(255, 255, 255, 0.5);
     /*the following 3 lines are what puts stuff in the center*/
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    color:black;
     border-radius: 10px 10px 10px 10px;
     overflow: auto;
 }
@@ -27,7 +46,9 @@
     background-color: #EEE; /*turns the bullets white*/
     margin: .5em; /* adds spacing between bullets */
     padding: .3em 0; /*makes each bullet thicker*/
+    text-align: left;
     border-radius: 10px; /*rounds the edges*/
+    color:black;
 }
 
 .rooms li:hover {
@@ -45,7 +66,7 @@
     position: relative;
     top: -5px; /*moves to align the top left corner*/
     height: 1.8em;
-    margin-right: .8em;
+    /*margin-right: .8em;*/
     border-radius: 10px 0 0 0;
 }
 button {
@@ -56,6 +77,7 @@ button {
     border-radius: 4px;
     cursor: pointer;
     cursor: hand;
+    color: black;
 }
 button:hover {
     background-color: #cfd8dc;

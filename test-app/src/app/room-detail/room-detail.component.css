@@ -1,14 +1,15 @@
 .room-content{
-    background-color: yellow;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 1), rgb(51, 142, 141));/*rgba(23, 190, 187, 1));*/
     display: flex;
     flex-direction:column;
     text-align:center;
     height: calc(100% - 52px);
     margin: 0 0 0 0;
+    color: #ddff00;
 }
 .room-container{
     position:relative;
-    background-color: green;
+    /*background-color: green;*/
     display:flex;
     flex-direction:row;
     flex:1;
@@ -16,7 +17,7 @@
 }
 
 .room-core{
-    background: linear-gradient(120deg, rgba(23, 190, 187, 1), rgba(240, 166, 202, 1));
+    /*background: linear-gradient(120deg, rgba(23, 190, 187, 1), rgba(240, 166, 202, 1)); cool blue-pink gradient*/ 
     display: flex;
     flex-direction: column;
     justify-content: flex-start; /* align items in Main Axis */
@@ -25,16 +26,15 @@
 }
 
 .toolbar{
-    background-color: blue;
     display:flex;
     flex-direction:column;
     flex-grow:1;
     align-self: stretch;
-    justify-self: stretch;
+    justify-self: stretch;   
 }
 
 .users{
-    background-color: blue;
+    /*background-color: blue;8*/
     display:flex;
     flex-direction:column;
     flex-grow:1;

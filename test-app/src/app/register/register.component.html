@@ -1,10 +1,12 @@
 <!-- https://www.w3schools.com/howto/howto_css_signup_form.asp -->
 
+<div class="container-fluid register-page">
+
+<div class="register-form col-md-6">
 <h2>Signup Form</h2>
 
 <div *ngIf="message"> {{ message }} </div>
 
-<div class="container">
   <label><b>Username</b></label>
   <input [(ngModel)]="user.username" /><br />
   <label><b>Email</b></label>
@@ -18,8 +20,27 @@
       
       <input type="checkbox" checked="checked"> Remember me
       -->
-  <div class="clearfix">
+<div class="clearfix">
     <button type="button" class="cancelbtn">Cancel</button>
     <button (click)="register()" class="signupbtn">Sign Up</button>
+</div>
+</div>
+</div>
+
+<!--
+  <div class="result-page-container col-md-6">
+    <h2>Results:</h2>
+    <ul class="rooms">
+      <li *ngFor="let room of rooms"
+	  [class.selected]= "room === selectedRoom"
+	  (click)="onSelect(room)">
+	<span class="badge">{{room.roomID}}</span> {{room.title}}
+      </li>
+    </ul>
+    <div *ngIf="selectedRoom">
+      <h4>Description:</h4>{{selectedRoom.description}}<br />
+      <button (click)="gotoDetail()">Join Chatroom</button>
+    </div>
   </div>
 </div>
+-->

@@ -1,5 +1,6 @@
-<div class="result-page-container col-md-6">
-  <h2>Results:</h2>
+<div class = "container-fluid result-page">
+  <div class="result-page-container col-md-6">
+    <h2>Results:</h2>
     <ul class="rooms">
       <li *ngFor="let room of rooms"
 	  [class.selected]= "room === selectedRoom"
@@ -9,6 +10,7 @@
     </ul>
     <div *ngIf="selectedRoom">
       <h4>Description:</h4>{{selectedRoom.description}}<br />
-      <button (click)="gotoDetail()">View Chatroom</button>
+      <button (click)="gotoDetail()">Join Chatroom</button>
     </div>
+  </div>
 </div>

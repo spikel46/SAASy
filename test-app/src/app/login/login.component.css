@@ -1,12 +1,4 @@
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
+/* Set a style for all buttons */
 button {
     background-color: #4CAF50;
     color: white;
@@ -14,34 +6,34 @@ button {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
 }
 
-button:hover {
-    opacity: 0.8;
+.container-fluid{
+    display: flex;
+    flex-direction:column;
+    text-align:center;
+    height: calc(100% - 52px);
+    margin: 0 0 0 0;
 }
 
-.cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
+/*overlay in home component if wanted later*/
+
+.login-page{
+    position: relative;
+    background-image: url('../../assets/img/OutputPortal.jpg');
+    background-size: cover;
+    background-position:center;
 }
 
-.imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-}
+.login-form{
+    position: absolute; /*within its parent element*/
+    background: rgba(255, 255, 255, 0.5);
+    /*the following 3 lines are what puts stuff in the center*/
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
-img.avatar {
-    width: 40%;
-    border-radius: 50%;
-}
-
-.container {
-    padding: 16px;
-}
-
-span.psw {
-    float: right;
-    padding-top: 16px;
+    color:black;
+    border-radius: 10px 10px 10px 10px;
+    overflow: auto;
 }
