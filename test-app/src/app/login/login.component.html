@@ -1,20 +1,23 @@
 <!-- https://www.w3schools.com/howto/howto_css_login_form.asp -->
 
 <div class="container-fluid login-page">
-
 <div class="login-form col-md-6">
   <h2>Login Form</h2>
+  <a routerLink="/register" routerLinkActive="active"><u>Not a user? Register!</u></a>
+<div class="clearfix">
     <label><b>Username</b></label>
     <input [(ngModel)]="user.username" /><br />
     <label><b>Password</b></label>
-    <input [(ngModel)]="user.password" /><br />
-
+    <input type="password" [(ngModel)]="user.password" /><br />
+</div>
   <div class="clearfix">
     <!--<input type="checkbox" checked="checked"> Remember me-->
     <button type="button" class="cancelbtn">Cancel</button>
     <button (click)="login()">Login</button>
-    <a class = "btn" href="/auth/facebook">Login with Facebook</a>
     <!--<span class="psw">Forgot <a href="#">password?</a></span>-->
+  </div>
+  <div class="clearfix fb-button">
+    <a class="btn btn-primary" href="/auth/facebook">Login with Facebook</a>
   </div>
 </div>
 

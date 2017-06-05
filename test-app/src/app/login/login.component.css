@@ -37,3 +37,7 @@ button {
     border-radius: 10px 10px 10px 10px;
     overflow: auto;
 }
+
+.fb-button{
+    padding-bottom: 5px;
+}
