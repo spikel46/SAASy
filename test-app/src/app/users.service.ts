@@ -15,6 +15,11 @@ export class UsersService {
   
   private usersUrl = '';
 
+  getUserInfo() {
+    return this.http.get( this.usersUrl + '/auth/userdata')
+    .map(response => response.json());
+  }
+
   register(user:User): Promise<any>{
     console.log(JSON.stringify(user));
     return this.http.post(this.usersUrl+'/api/register',
@@ -39,13 +44,6 @@ export class UsersService {
     
   }
 
-  facebookLogin(): Promise<any>{
-    console.log("trying fb login");
-    return this.http.get(this.usersUrl+'/auth/facebook')
-               .toPromise()
-               .then(res => res.json())
-               .catch(this.handleError);
-  }
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only

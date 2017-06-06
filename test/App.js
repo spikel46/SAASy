@@ -79,6 +79,10 @@ var App = (function () {
         });
         router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['public_profile', 'email'] }));
         router.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login', successRedirect: '/rooms' }));
+        router.get('/auth/userdata', this.validateAuth, function (req, res) {
+            console.log('user object:' + JSON.stringify(req.user));
+            res.json(req.user);
+        });
         //Get Routes
         router.get('/api/rooms', function (req, res) {
             console.log('Getting all rooms');

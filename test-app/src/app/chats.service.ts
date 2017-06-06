@@ -16,22 +16,25 @@ export class ChatsService {
   private headers = new Headers({'Content-Type': 'application/json'});
   private hostUrl = '';
 
-  private temp_user = "Not-Joey";
   private curr_time = new Date();
-  private rating = 30; 
   private socket:any;
 
   constructor(private http: Http) { }
+
+  getUserInfo() {
+    return this.http.get( this.hostUrl + '/auth/userdata')
+    .map(response => response.json());
+  }
 
   sendChat(content_str: string, roomID: number): Promise<Chat> {
       console.log(content_str, roomID);
       this.socket.emit('add-Chat', content_str);
       return this.http.post(this.hostUrl+'/api/newchat',
-      	JSON.stringify({sender: this.temp_user,
+      	JSON.stringify({sender: "Joey",
 		        toRoom: roomID,
 			content: content_str,
 			timestamp: this.curr_time,
-			score: this.rating
+			score: 0
                       }), {headers: this.headers})
         .toPromise()
         .then(res => res.json().data as Chat)
@@ -50,11 +53,11 @@ export class ChatsService {
       this.socket = io(this.hostUrl);
       this.socket.on('Chat', (data) => { 
         console.log(data);
-        observer.next({sender: this.temp_user,
+        observer.next({sender: "Joey",
 		        toRoom: roomID,
 			content: data,
 			timestamp: this.curr_time,
-			score: this.rating
+			score: 0
                       });
       });
       return () => { this.socket.disconnect(); }; 

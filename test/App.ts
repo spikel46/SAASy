@@ -107,6 +107,11 @@ class App {
         )
     );
 
+    router.get('/auth/userdata', this.validateAuth, (req, res) => {
+        console.log('user object:' + JSON.stringify(req.user));
+        res.json(req.user);
+    });
+
     //Get Routes
 
     router.get('/api/rooms', (req, res) => {
