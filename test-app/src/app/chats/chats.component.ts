@@ -19,9 +19,16 @@ export class ChatsComponent implements OnInit {
   chat: Chat;
   connection:any;
   message:any;
-  
+  username:string;
 
-  constructor(private chatsService: ChatsService) {}
+  constructor(private chatsService: ChatsService) 
+  {
+      this.chatsService.getUserInfo()
+          .subscribe(
+           result => {
+             this.username = result.displayName;
+           });
+  }
 
 
   ngOnInit() {
@@ -40,7 +47,7 @@ export class ChatsComponent implements OnInit {
 
   add(message: string): void {
     if (!message) { return; }
-    this.chatsService.sendChat(message, this.id)
+    this.chatsService.sendChat(message, this.id, this.username)
         .then(chat => this.chat = chat);
   }
   upvote(up_chat: Chat): void {

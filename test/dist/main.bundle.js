@@ -232,7 +232,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var ChatsComponent = (function () {
     function ChatsComponent(chatsService) {
+        var _this = this;
         this.chatsService = chatsService;
+        this.chatsService.getUserInfo()
+            .subscribe(function (result) {
+            _this.username = result.displayName;
+        });
     }
     ChatsComponent.prototype.ngOnInit = function () {
         this.getChats();
@@ -252,7 +257,7 @@ var ChatsComponent = (function () {
         if (!message) {
             return;
         }
-        this.chatsService.sendChat(message, this.id)
+        this.chatsService.sendChat(message, this.id, this.username)
             .then(function (chat) { return _this.chat = chat; });
     };
     ChatsComponent.prototype.upvote = function (up_chat) {
@@ -752,15 +757,17 @@ var ChatsService = (function () {
         return this.http.get(this.hostUrl + '/auth/userdata')
             .map(function (response) { return response.json(); });
     };
-    ChatsService.prototype.sendChat = function (content_str, roomID) {
-        console.log(content_str, roomID);
-        this.socket.emit('add-Chat', content_str);
-        return this.http.post(this.hostUrl + '/api/newchat', JSON.stringify({ sender: "Joey",
+    ChatsService.prototype.sendChat = function (content_str, roomID, u_name) {
+        console.log(content_str, roomID, u_name);
+        var my_chat = {
+            sender: u_name,
             toRoom: roomID,
             content: content_str,
             timestamp: this.curr_time,
             score: 0
-        }), { headers: this.headers })
+        };
+        this.socket.emit('add-Chat', my_chat);
+        return this.http.post(this.hostUrl + '/api/newchat', JSON.stringify(my_chat), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json().data; })
             .catch(this.handleError);
@@ -777,12 +784,7 @@ var ChatsService = (function () {
             _this.socket = __WEBPACK_IMPORTED_MODULE_2_socket_io_client__(_this.hostUrl);
             _this.socket.on('Chat', function (data) {
                 console.log(data);
-                observer.next({ sender: "Joey",
-                    toRoom: roomID,
-                    content: data,
-                    timestamp: _this.curr_time,
-                    score: 0
-                });
+                observer.next(data);
             });
             return function () { _this.socket.disconnect(); };
         });

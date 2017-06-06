@@ -26,16 +26,18 @@ export class ChatsService {
     .map(response => response.json());
   }
 
-  sendChat(content_str: string, roomID: number): Promise<Chat> {
-      console.log(content_str, roomID);
-      this.socket.emit('add-Chat', content_str);
-      return this.http.post(this.hostUrl+'/api/newchat',
-      	JSON.stringify({sender: "Joey",
+  sendChat(content_str: string, roomID: number, u_name:string): Promise<Chat> {
+      console.log(content_str, roomID, u_name);
+      var my_chat = {
+                        sender: u_name,
 		        toRoom: roomID,
 			content: content_str,
 			timestamp: this.curr_time,
 			score: 0
-                      }), {headers: this.headers})
+                      }
+      this.socket.emit('add-Chat', my_chat);
+      return this.http.post(this.hostUrl+'/api/newchat',
+      	JSON.stringify(my_chat), {headers: this.headers})
         .toPromise()
         .then(res => res.json().data as Chat)
         .catch(this.handleError);
@@ -53,12 +55,7 @@ export class ChatsService {
       this.socket = io(this.hostUrl);
       this.socket.on('Chat', (data) => { 
         console.log(data);
-        observer.next({sender: "Joey",
-		        toRoom: roomID,
-			content: data,
-			timestamp: this.curr_time,
-			score: 0
-                      });
+        observer.next(data);
       });
       return () => { this.socket.disconnect(); }; 
     })
