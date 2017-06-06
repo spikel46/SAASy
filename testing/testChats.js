@@ -7,7 +7,7 @@ var assert = chai.assert;
 var expect = chai.expect;
 var should = chai.should();
 
-var server = "http://localhost:8080";
+var server = "http://quorumquery.azurewebsites.net";
 var chatsApi = "/api/chats";
 var postChatApi = "/api/newchat";
 chai.use(chaiHttp);
@@ -29,10 +29,10 @@ describe("Test Getting Chats from Room 4", function() {
 	});
   });
 
-  it("Should return array of length above 3", function() {
+  it("Should return array of length above 2", function() {
     expect(response).to.have.status(200);
     expect(response.body).to.be.an.object;
-    expect(response.body).to.have.length.above(3);
+    expect(response.body).to.have.length.above(2);
     expect(response).to.have.headers;
   });
 
@@ -61,13 +61,13 @@ describe("Test Sending Chat", function() {
                score:100
              };
 
-  it("Should return array of length above 3", function(done) {
+  it("Should return array of length above 2", function(done) {
     chai.request(server)
         .get(chatsApi+"/4")
         .end(function (err, res) {
           expect(res).to.have.status(200);
           expect(res.body).to.be.an.object;
-          expect(res.body).to.have.length.above(3);
+          expect(res.body).to.have.length.above(2);
           expect(res).to.have.headers;
 	  done();
         });

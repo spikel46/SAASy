@@ -104,7 +104,7 @@ var App = (function () {
             _this.Rooms.search(res, term);
         });
         //Post Routes
-        router.post('/api/newroom', function (req, res) {
+        router.post('/api/newroom', this.validateAuth, function (req, res) {
             _this.Rooms.newRoom(res, req).then(function (list) {
                 res.send(list);
             });
@@ -126,19 +126,19 @@ var App = (function () {
             failureRedirect: '/login'
         }));
         //Put Routes
-        router.put('/api/chats/:id/upvote', function (req, res) {
+        router.put('/api/chats/:id/upvote', this.validateAuth, function (req, res) {
             _this.Chats.upvote(res, req).then(function (list) {
                 res.send(list);
             });
             console.log("Upvoted chat");
         });
-        router.put('/api/chats/:id/downvote', function (req, res) {
+        router.put('/api/chats/:id/downvote', this.validateAuth, function (req, res) {
             _this.Chats.downvote(res, req).then(function (list) {
                 res.send(list);
             });
             console.log("Downvoted chat");
         });
-        router.put('/api/rooms/:id', function (req, res) {
+        router.put('/api/rooms/:id', this.validateAuth, function (req, res) {
             console.log("updating room");
             _this.Rooms.update(res, req);
             console.log("updated room");

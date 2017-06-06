@@ -6,7 +6,7 @@ var assert = chai.assert;
 var expect = chai.expect;
 var should = chai.should();
 
-var server = "http://localhost:8080";
+var server = "http://quorumquery.azurewebsites.net";
 var roomsApi = "/api/rooms";
 var searchApi = "/api/search";
 chai.use(chaiHttp);

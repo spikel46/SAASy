@@ -139,13 +139,13 @@ class App {
 
     //Post Routes
 
-    router.post('/api/newroom',(req,res)=>{
+    router.post('/api/newroom', this.validateAuth, (req,res)=>{
       this.Rooms.newRoom(res, req).then((list) =>{
         res.send(list);
       });
     });
 
-    router.post('/api/newchat',(req,res)=>{
+    router.post('/api/newchat', (req,res)=>{
       this.Chats.newChat(res, req).then((list) =>{
         res.send(list);
       });
@@ -166,21 +166,21 @@ class App {
     }));
 
     //Put Routes
-    router.put('/api/chats/:id/upvote',(req,res)=>{
+    router.put('/api/chats/:id/upvote', this.validateAuth, (req,res)=>{
       this.Chats.upvote(res,req).then((list)=>{
         res.send(list);
       });
       console.log("Upvoted chat");
     });
 
-    router.put('/api/chats/:id/downvote',(req,res)=>{
+    router.put('/api/chats/:id/downvote', this.validateAuth, (req,res)=>{
       this.Chats.downvote(res,req).then((list)=>{
         res.send(list);
       });
       console.log("Downvoted chat");
     });
 
-    router.put('/api/rooms/:id',(req,res)=>{
+    router.put('/api/rooms/:id', this.validateAuth, (req,res)=>{
      console.log("updating room");
       this.Rooms.update(res,req);
       console.log("updated room");

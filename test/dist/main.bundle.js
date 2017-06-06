@@ -353,7 +353,7 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, ".container-fluid{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient:vertical;\n    -webkit-box-direction:normal;\n        -ms-flex-direction:column;\n            flex-direction:column;\n    text-align:center;\n    height: calc(100% - 52px);\n    margin: 0 0 0 0;\n}\n\n.bg-1{\n    position: relative;\n    background-image: url(" + __webpack_require__(255) + ");\n    background-size: cover;\n    background-position:center;\n}\n\n.overlay{\n    position: absolute; /*within its parent element*/\n    \n    border-radius: 15px;\n    /*the following 3 lines are what puts stuff in the center*/\n    top: 50%;\n    left: 50%;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n \n    /*makes the text box and text*/\n    color: white;\n    background: rgba(0, 0, 0, 0.75);\n}", ""]);
+exports.push([module.i, ".container-fluid{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient:vertical;\n    -webkit-box-direction:normal;\n        -ms-flex-direction:column;\n            flex-direction:column;\n    text-align:center;\n    height: calc(100% - 52px);\n    margin: 0 0 0 0;\n}\n\n.bg-1{\n    position: relative;\n    background-image: url(" + __webpack_require__(256) + ");\n    background-size: cover;\n    background-position:center;\n}\n\n.overlay{\n    position: absolute; /*within its parent element*/\n    \n    border-radius: 15px;\n    /*the following 3 lines are what puts stuff in the center*/\n    top: 50%;\n    left: 50%;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n \n    /*makes the text box and text*/\n    color: white;\n    background: rgba(0, 0, 0, 0.75);\n}", ""]);
 
 // exports
 
@@ -371,7 +371,7 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, "/* Set a style for all buttons */\nbutton {\n    background-color: #4CAF50;\n    color: white;\n    padding: 14px 20px;\n    margin: 8px 0;\n    border: none;\n    cursor: pointer;\n}\n\n.container-fluid{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient:vertical;\n    -webkit-box-direction:normal;\n        -ms-flex-direction:column;\n            flex-direction:column;\n    text-align:center;\n    height: calc(100% - 52px);\n    margin: 0 0 0 0;\n}\n\n/*overlay in home component if wanted later*/\n\n.login-page{\n    position: relative;\n    background-image: url(" + __webpack_require__(257) + ");\n    background-size: cover;\n    background-position:center;\n}\n\n.login-form{\n    position: absolute; /*within its parent element*/\n    background: rgba(255, 255, 255, 0.5);\n    /*the following 3 lines are what puts stuff in the center*/\n    top: 50%;\n    left: 50%;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n\n    color:black;\n    border-radius: 10px 10px 10px 10px;\n    overflow: auto;\n}\n\n.fb-button{\n    padding-bottom: 5px;\n}\n", ""]);
+exports.push([module.i, "/* Set a style for all buttons */\nbutton {\n    background-color: #4CAF50;\n    color: white;\n    padding: 14px 20px;\n    margin: 8px 0;\n    border: none;\n    cursor: pointer;\n}\n\n.container-fluid{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient:vertical;\n    -webkit-box-direction:normal;\n        -ms-flex-direction:column;\n            flex-direction:column;\n    text-align:center;\n    height: calc(100% - 52px);\n    margin: 0 0 0 0;\n}\n\n/*overlay in home component if wanted later*/\n\n.login-page{\n    position: relative;\n    background-image: url(" + __webpack_require__(258) + ");\n    background-size: cover;\n    background-position:center;\n}\n\n.login-form{\n    position: absolute; /*within its parent element*/\n    background: rgba(255, 255, 255, 0.5);\n    /*the following 3 lines are what puts stuff in the center*/\n    top: 50%;\n    left: 50%;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n\n    color:black;\n    border-radius: 10px 10px 10px 10px;\n    overflow: auto;\n}\n\n.fb-button{\n    padding-bottom: 5px;\n}\n", ""]);
 
 // exports
 
@@ -407,7 +407,7 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, "/* Set a style for all buttons */\nbutton {\n    background-color: #4CAF50;\n    color: white;\n    padding: 14px 20px;\n    margin: 8px 0;\n    border: none;\n    cursor: pointer;\n}\n\n.container-fluid{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient:vertical;\n    -webkit-box-direction:normal;\n        -ms-flex-direction:column;\n            flex-direction:column;\n    text-align:center;\n    height: calc(100% - 52px);\n    margin: 0 0 0 0;\n}\n\n/*overlay in home component if wanted later*/\n\n.register-page{\n    position: relative;\n    background-image: url(" + __webpack_require__(256) + ");\n    background-size: cover;\n    background-position:center;\n}\n\n.register-form{\n    position: absolute; /*within its parent element*/\n    background: rgba(255, 255, 255, 0.5);\n\n    /*the following 3 lines are what puts stuff in the center*/\n    top: 50%;\n    left: 50%;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n\n    color:black;\n    border-radius: 10px 10px 10px 10px;\n    overflow: auto;\n}\n\n.cancelbtn\n{\n    background-color: red;\n}\n", ""]);
+exports.push([module.i, "/* Set a style for all buttons */\nbutton {\n    background-color: #4CAF50;\n    color: white;\n    padding: 14px 20px;\n    margin: 8px 0;\n    border: none;\n    cursor: pointer;\n}\n\n.container-fluid{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient:vertical;\n    -webkit-box-direction:normal;\n        -ms-flex-direction:column;\n            flex-direction:column;\n    text-align:center;\n    height: calc(100% - 52px);\n    margin: 0 0 0 0;\n}\n\n/*overlay in home component if wanted later*/\n\n.register-page{\n    position: relative;\n    background-image: url(" + __webpack_require__(257) + ");\n    background-size: cover;\n    background-position:center;\n}\n\n.register-form{\n    position: absolute; /*within its parent element*/\n    background: rgba(255, 255, 255, 0.5);\n\n    /*the following 3 lines are what puts stuff in the center*/\n    top: 50%;\n    left: 50%;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n\n    color:black;\n    border-radius: 10px 10px 10px 10px;\n    overflow: auto;\n}\n\n.cancelbtn\n{\n    background-color: red;\n}\n", ""]);
 
 // exports
 
@@ -461,7 +461,7 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, ".room-page-container{\n    position: absolute; /*within its parent element*/\n    background: rgba(0, 0, 0, 0.75);\n    /*the following 3 lines are what puts stuff in the center*/\n    top: 50%;\n    left: 50%;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n    border-radius: 10px 10px 10px 10px;\n    overflow: auto;\n}\n\n/*color selected object*/\n.selected {\n    background-color: #CFD8DC !important;\n    color: white;\n}\n\n.rooms {  \n    list-style-type: none; /*removes bullet points */\n    padding: 0; /*pushes padding, moving the bullets to the left */\n    width: 15em; /*limit the highlight when selected*/\n}\n\n.rooms li {\n    cursor: pointer;\n    position: relative;\n    background-color: #EEE; /*turns the bullets white*/\n    margin: .5em; /* adds spacing between bullets */\n    padding: .3em 0; /*makes each bullet thicker*/\n    border-radius: 10px; /*rounds the edges*/\n}\n\n.rooms li:hover {\n    color: #607D8B; /*changes color of text on hover*/\n    background-color: #DDD; /*changes color of bullets*/\n}\n\n.rooms .badge {\n    display: inline-block;\n    font-size: small;\n    color: white; /*changes text color*/\n    /*padding: 0.8em 0.7em 0.7em 0.7em;*/\n    background-color: #607D8B; /*changes background color*/\n    line-height: 1em; /* changes number position inside the badge */\n    position: relative;\n    top: -5px; /*moves to align the top left corner*/\n    height: 1.8em;\n    margin-right: .8em;\n    border-radius: 10px 0 0 0;\n}\nbutton {\n    font-family: Arial;\n    background-color: #eee;\n    border: none;\n    padding: 5px 10px;\n    border-radius: 4px;\n    cursor: pointer;\n    cursor: hand;\n    color:black;\n}\nbutton:hover {\n    background-color: #cfd8dc;\n}\n\n.pop-out{\n    color:white;\n}", ""]);
+exports.push([module.i, ".container-fluid{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient:vertical;\n    -webkit-box-direction:normal;\n        -ms-flex-direction:column;\n            flex-direction:column;\n    text-align:center;\n    height: calc(100% - 52px);\n    margin: 0 0 0 0;\n}\n\n/*overlay in home component if wanted later*/\n\n.room-page{\n    position: relative;\n    background-image: url(" + __webpack_require__(255) + ");\n    background-size: cover;\n    background-position:center;\n}\n\n.room-page-container{\n    position: absolute; /*within its parent element*/\n    background: rgba(0, 0, 0, 0.75);\n    /*the following 3 lines are what puts stuff in the center*/\n    top: 50%;\n    left: 50%;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n    border-radius: 10px 10px 10px 10px;\n    overflow: auto;\n}\n\n/*color selected object*/\n.selected {\n    background-color: #CFD8DC !important;\n    color: white;\n}\n\n.rooms {\n    list-style-type: none; /*removes bullet points */\n    padding: 0; /*pushes padding, moving the bullets to the left */\n    width: 15em; /*limit the highlight when selected*/\n}\n\n.rooms li {\n    cursor: pointer;\n    position: relative;\n    background-color: #EEE; /*turns the bullets white*/\n    margin: .5em; /* adds spacing between bullets */\n    padding: .3em 0; /*makes each bullet thicker*/\n    text-align: left;\n    border-radius: 10px; /*rounds the edges*/\n    color:black;\n}\n\n.rooms li:hover {\n    color: #607D8B; /*changes color of text on hover*/\n    background-color: #DDD; /*changes color of bullets*/\n}\n\n.rooms .badge {\n    display: inline-block;\n    font-size: small;\n    color: white; /*changes text color*/\n    /*padding: 0.8em 0.7em 0.7em 0.7em;*/\n    background-color: #607D8B; /*changes background color*/\n    line-height: 1em; /* changes number position inside the badge */\n    position: relative;\n    top: -5px; /*moves to align the top left corner*/\n    height: 1.8em;\n    /*margin-right: .8em;*/\n    border-radius: 10px 0 0 0;\n}\nbutton {\n    font-family: Arial;\n    background-color: #eee;\n    border: none;\n    padding: 5px 10px;\n    border-radius: 4px;\n    cursor: pointer;\n    cursor: hand;\n    color: black;\n}\nbutton:hover {\n    background-color: #cfd8dc;\n}\n\n.pop-out{\n    color:white;\n}\n", ""]);
 
 // exports
 
@@ -530,7 +530,7 @@ module.exports = "<div class = \"container-fluid result-page\">\n  <div class=\"
 /***/ 218:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"room-page-container\">\n  <h2 style=\"color:#FFF;\">My Rooms</h2>\n  <ul class=\"rooms\">\n    <li *ngFor=\"let room of rooms\"\n\t[class.selected]= \"room === selectedRoom\"\n\t(click)=\"onSelect(room)\">\n      <span class=\"badge\">{{room.roomID}}</span> {{room.title}}\n    </li>\n  </ul>\n  <div *ngIf=\"selectedRoom\" class=\"pop-out\">\n    <h4>Description:</h4>{{selectedRoom.description}}<br />\n    <button (click)=\"gotoDetail()\">View Chatroom</button>\n  </div>\n</div>\n"
+module.exports = "<div class=\"room-page container-fluid\">\n\n<div class=\"room-page-container\">\n  <h2 style=\"color:#FFF;\">My Rooms</h2>\n  <ul class=\"rooms\">\n    <li *ngFor=\"let room of rooms\"\n\t[class.selected]= \"room === selectedRoom\"\n\t(click)=\"onSelect(room)\">\n      <span class=\"badge\">{{room.roomID}}</span> {{room.title}}\n    </li>\n  </ul>\n  <div *ngIf=\"selectedRoom\" class=\"pop-out\">\n    <h4>Description:</h4>{{selectedRoom.description}}<br />\n    <button (click)=\"gotoDetail()\">View Chatroom</button>\n  </div>\n</div>\n\n</div>\n"
 
 /***/ }),
 
@@ -544,32 +544,39 @@ module.exports = __webpack_require__.p + "BlackHole_1_WikimediaCommons.88aa7ff4f
 /***/ 255:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "HelixNebulaWikimediaCommons.816e0545f275be4be74b.jpg";
+module.exports = __webpack_require__.p + "BlackHole_2_WikimediaCommons.3dffea5b2b66b9f859fa.jpg";
 
 /***/ }),
 
 /***/ 256:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "InputPortal.4ca5cfa238f29a98edcf.jpg";
+module.exports = __webpack_require__.p + "HelixNebulaWikimediaCommons.816e0545f275be4be74b.jpg";
 
 /***/ }),
 
 /***/ 257:
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports = __webpack_require__.p + "InputPortal.4ca5cfa238f29a98edcf.jpg";
+
+/***/ }),
+
+/***/ 258:
+/***/ (function(module, exports, __webpack_require__) {
+
 module.exports = __webpack_require__.p + "OutputPortal.311f77d06084002122d7.jpg";
 
 /***/ }),
 
-/***/ 261:
+/***/ 262:
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
 
-/***/ 262:
+/***/ 263:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(119);
@@ -1216,5 +1223,5 @@ var _a, _b;
 
 /***/ })
 
-},[262]);
+},[263]);
 //# sourceMappingURL=main.bundle.js.map
