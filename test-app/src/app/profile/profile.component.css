@@ -1,0 +1,86 @@
+.container-fluid{
+    display: flex;
+    flex-direction:column;
+    text-align:center;
+    height: calc(100% - 52px);
+    margin: 0 0 0 0;
+}
+
+/*overlay in home component if wanted later*/
+
+.room-page{
+    position: relative;
+    background-image: url('../../assets/img/BlackHole_2_WikimediaCommons.jpg');
+    background-size: cover;
+    background-position:center;
+}
+
+.room-page-container{
+    position: absolute; /*within its parent element*/
+    background: rgba(0, 0, 0, 0.75);
+    /*the following 3 lines are what puts stuff in the center*/
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px 10px 10px 10px;
+    overflow: auto;
+}
+
+/*color selected object*/
+.selected {
+    background-color: #CFD8DC !important;
+    color: white;
+}
+
+.rooms {
+    list-style-type: none; /*removes bullet points */
+    padding: 0; /*pushes padding, moving the bullets to the left */
+    width: 15em; /*limit the highlight when selected*/
+}
+
+.rooms li {
+    cursor: pointer;
+    position: relative;
+    background-color: #EEE; /*turns the bullets white*/
+    margin: .5em; /* adds spacing between bullets */
+    padding: .3em 0; /*makes each bullet thicker*/
+    text-align: left;
+    border-radius: 10px; /*rounds the edges*/
+    color:black;
+}
+
+.rooms li:hover {
+    color: #607D8B; /*changes color of text on hover*/
+    background-color: #DDD; /*changes color of bullets*/
+}
+
+.rooms .badge {
+    display: inline-block;
+    font-size: small;
+    color: white; /*changes text color*/
+    /*padding: 0.8em 0.7em 0.7em 0.7em;*/
+    background-color: #607D8B; /*changes background color*/
+    line-height: 1em; /* changes number position inside the badge */
+    position: relative;
+    top: -5px; /*moves to align the top left corner*/
+    height: 1.8em;
+    /*margin-right: .8em;*/
+    border-radius: 10px 0 0 0;
+}
+button {
+    font-family: Arial;
+    background-color: #eee;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    cursor: hand;
+    color: black;
+}
+button:hover {
+    background-color: #cfd8dc;
+}
+
+.pop-out{
+    color:white;
+}

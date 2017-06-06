@@ -9,9 +9,9 @@ function importRoomData(db) {
             isActive: true,
             isPublic: true,
             description: "Come here to share your favorite tech!",
-            users: ["Joey", "Tymon", "Elon"],
-            moderators: ["Tymon"],
-            admin: "Joey",
+            users: ["Joey Koblitz", "Tymon Schroeder", "Elon"],
+            moderators: ["Tymon Schroeder"],
+            admin: "Joey Koblitz",
             keywords: ["Science", "Math", "EE"]
         },
         {
@@ -20,9 +20,9 @@ function importRoomData(db) {
             isActive: true,
             isPublic: true,
             description: "Come here to learn how to help your community",
-            users: ["Joey", "Dominic", "Tymon", "Elon"],
+            users: ["Joey Koblitz", "Dominic Savio", "Tymon Schroeder", "Elon"],
             moderators: ["Elon"],
-            admin: "Joey",
+            admin: "Joey Koblitz",
             keywords: ["Helpful", "Charity", "Support"]
         },
         {
@@ -31,9 +31,9 @@ function importRoomData(db) {
             isActive: true,
             isPublic: true,
             description: "League Gamers not welcome!",
-            users: ["Joey", "Dominic", "Tymon", "Elon"],
+            users: ["Joey Koblitz", "Dominic Savio", "Tymon Schroeder", "Elon"],
             moderators: ["Elon"],
-            admin: "Joey",
+            admin: "Joey Koblitz",
             keywords: ["Nerds", "#gamerlyfe", "#willanyoneseethis"]
         },
         {
@@ -42,9 +42,9 @@ function importRoomData(db) {
             isActive: true,
             isPublic: true,
             description: "Share your favorite music here!",
-            users: ["Dominic", "Tymon", "Not-Joey"],
-            moderators: ["Not-Joey", "Dominic"],
-            admin: "Tymon",
+            users: ["Dominic Savio", "Tymon Schroeder", "Not-Joey"],
+            moderators: ["Not-Joey", "Dominic Savio"],
+            admin: "Tymon Schroeder",
             keywords: ["Piano", "Violin", "Kazoo"]
         },
         {
@@ -53,9 +53,9 @@ function importRoomData(db) {
             isActive: true,
             isPublic: true,
             description: "Share your favorite recipes here!",
-            users: ["Joey", "Dominic", "Not-Joey"],
-            moderators: ["Joey", "Not-Joey"],
-            admin: "Dominic",
+            users: ["Joey Koblitz", "Dominic Savio", "Not-Joey"],
+            moderators: ["Joey Koblitz", "Not-Joey"],
+            admin: "Dominic Savio",
             keywords: ["Hungry People", "Forks", "Knives"]
         }
     ];
@@ -67,7 +67,7 @@ function importRoomData(db) {
 function importChatsData(db) {
     var list = [
         {
-            sender: "Joey",
+            sender: "Joey Koblitz",
             toRoom: 1,
             content: "this message is a test",
             timestamp: "2017-05-16T21:13:32.270Z",
@@ -81,14 +81,14 @@ function importChatsData(db) {
             score: 0
         },
         {
-            sender: "Tymon",
+            sender: "Tymon Schroeder",
             toRoom: 1,
             content: "Hi guys",
             timestamp: "2017-05-16T21:13:32.270Z",
             score: 0
         },
         {
-            sender: "Joey",
+            sender: "Joey Koblitz",
             toRoom: 2,
             content: "I def didn't copy paste these",
             timestamp: "2017-05-16T21:13:32.270Z",
@@ -102,14 +102,14 @@ function importChatsData(db) {
             score: 0
         },
         {
-            sender: "Dominic",
+            sender: "Dominic Savio",
             toRoom: 2,
             content: "truther",
             timestamp: "2017-05-16T21:13:32.270Z",
             score: 0
         },
         {
-            sender: "Joey",
+            sender: "Joey Koblitz",
             toRoom: 3,
             content: "this message is a test",
             timestamp: "2017-05-16T21:13:32.270Z",
@@ -123,21 +123,21 @@ function importChatsData(db) {
             score: 0
         },
         {
-            sender: "Tymon",
+            sender: "Tymon Schroeder",
             toRoom: 3,
             content: "yeah we messed up",
             timestamp: "2017-05-16T21:13:32.270Z",
             score: 0
         },
         {
-            sender: "Dominic",
+            sender: "Dominic Savio",
             toRoom: 4,
             content: "...",
             timestamp: "2017-05-16T21:13:32.270Z",
             score: 10
         },
         {
-            sender: "Tymon",
+            sender: "Tymon Schroeder",
             toRoom: 4,
             content: "sigh",
             timestamp: "2017-05-16T21:13:32.270Z",
@@ -158,14 +158,14 @@ function importChatsData(db) {
             score: 10
         },
         {
-            sender: "Dominic",
+            sender: "Dominic Savio",
             toRoom: 5,
             content: "wait what",
             timestamp: "2017-05-16T21:13:32.270Z",
             score: 0
         },
         {
-            sender: "Joey",
+            sender: "Joey Koblitz",
             toRoom: 5,
             content: "omg you suck",
             timestamp: "2017-05-16T21:13:32.270Z",

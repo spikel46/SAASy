@@ -50,6 +50,14 @@ var RoomModel = (function () {
         });
         return response;
     };
+    RoomModel.prototype.roomByUser = function (res, user) {
+        var filter = { $or: [{ owner: user }, { moderator: user }, { users: user }] };
+        var query = this.model.find(filter);
+        query.exec(function (err, userRoom) {
+            res.json(userRoom);
+        });
+        return res;
+    };
     //redo this
     RoomModel.prototype.newRoom = function (response, req) {
         var id = req.body.roomId;

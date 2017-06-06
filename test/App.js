@@ -103,6 +103,11 @@ var App = (function () {
             console.log('Getting search results for: ' + term);
             _this.Rooms.search(res, term);
         });
+        router.get('/api/profile', this.validateAuth, function (req, res) {
+            var user = req.user.displayName;
+            console.log("Getting rooms for", user);
+            _this.Rooms.roomByUser(res, user);
+        });
         //Post Routes
         router.post('/api/newroom', this.validateAuth, function (req, res) {
             _this.Rooms.newRoom(res, req).then(function (list) {

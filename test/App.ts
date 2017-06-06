@@ -137,6 +137,12 @@ class App {
 	this.Rooms.search(res, term);
     });
 
+    router.get('/api/profile', this.validateAuth, (req,res)=>{
+        var user = req.user.displayName;
+        console.log("Getting rooms for", user);
+        this.Rooms.roomByUser(res, user);
+    });
+
     //Post Routes
 
     router.post('/api/newroom', this.validateAuth, (req,res)=>{

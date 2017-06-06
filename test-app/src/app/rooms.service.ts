@@ -44,6 +44,13 @@ export class RoomsService {
 	       .then(res => res.json() as Room[])
 	       .catch(this.handleError);
   }
+
+  getUserRooms(): Promise<Room[]>{
+    return this.http.get(this.hostUrl+'/api/profile')
+               .toPromise()
+               .then(res => res.json() as Room[])
+               .catch(this.handleError);
+  }
   
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only

@@ -61,6 +61,15 @@ export default class RoomModel {
 	return response;
     }
 
+    public roomByUser(res: any, user:string){
+        var filter = { $or:[ {owner: user}, {moderator: user}, {users: user}]};
+        var query = this.model.find(filter);
+        query.exec ( (err, userRoom) => {
+            res.json(userRoom);
+        });
+        return res;
+    }
+
 //redo this
     public newRoom(response:any, req) {
         var id = req.body.roomId;

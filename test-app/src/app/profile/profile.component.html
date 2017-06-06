@@ -2,4 +2,23 @@
   <h2> Profile </h2>
   <p>{{ password }}</p>
   <p>{{ username }}</p>
+  
+<div class="room-page container-fluid">
+
+<div class="room-page-container">
+  <h2 style="color:#FFF;">My Rooms</h2>
+  <ul class="rooms">
+    <li *ngFor="let room of rooms"
+	[class.selected]= "room === selectedRoom"
+	(click)="onSelect(room)">
+      <span class="badge">{{room.roomID}}</span> {{room.title}}
+    </li>
+  </ul>
+  <div *ngIf="selectedRoom" class="pop-out">
+    <h4>Description:</h4>{{selectedRoom.description}}<br />
+    <button (click)="gotoDetail()">View Chatroom</button>
+  </div>
+</div>
+
+</div>
 </div>
