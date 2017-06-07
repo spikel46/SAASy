@@ -72,10 +72,11 @@
 }
 
 .chatbox-messages-sent .message-rating{
-    position:absolute;
+    /*position:absolute;
     display:inline-block;
-    left:7px;
-    top:5px;
+    left:0px;
+    top:0px;*/
+    display:inline-block;
 }
 
 .chatbox-messages-recieved .message-rating{

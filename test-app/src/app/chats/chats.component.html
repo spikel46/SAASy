@@ -8,7 +8,7 @@
   <div class="chatbox-body">
     <ul class="messages">
       <li *ngFor="let chat of chats">
-	<div *ngIf="chat.sender === 'Joey'">
+	<div *ngIf="chat.sender === username">
 	  <div class="chatbox-messages-sent" id="chat-msg">
             <div class="message-rating input-group-btn">
               <button class="btn btn-default btn-xs" id="up-btn" (click)="upvote(chat)">
@@ -24,7 +24,7 @@
 	    <p class="date"> {{chat.timestamp | date:"short"}}</p>
 	  </div>
 	</div>
-	<div *ngIf="chat.sender !== 'Joey'">
+	<div *ngIf="chat.sender !== username">
 	  <div class="chatbox-messages-recieved" id="chat-msg">
 	    <p class="sender"> {{chat.sender}}: </p>
 	    <div class="message-rating input-group-btn">
